@@ -3,7 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Book Name</th>
+      <th>Author</th>
       <th>Description</th>
       <th>Rating</th>
       <th>Times rated</th>
@@ -17,8 +18,9 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.name %></td>
+        <td><%= book.author %></td>
         <td><%= book.description %></td>
-        <td><%= book.rating %></td>
+        <td><%= '%.1f' % book.rating %></td>
         <td><%= book.times_rated %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>

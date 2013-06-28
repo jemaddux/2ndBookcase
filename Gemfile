@@ -12,6 +12,7 @@ gem 'pg'
 gem 'simplecov'
 gem 'rspec-rails'
 
+
 group :development, :test do
   gem 'sqlite3'
   gem 'faker'
