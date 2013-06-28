@@ -9,6 +9,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'unicorn'
 gem 'pg'
+gem 'simplecov'
+gem 'rspec-rails'
 
 group :development, :test do
   gem 'sqlite3'
