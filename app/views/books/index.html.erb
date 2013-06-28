@@ -1,3 +1,5 @@
+
+
 <h1>Listing books</h1>
 
 <table>
@@ -15,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+    <% for book in @books %>
       <tr>
         <td><%= book.name %></td>
         <td><%= book.author %></td>
@@ -31,5 +33,6 @@
 </table>
 
 <br>
-
+<%= will_paginate @books %>
+<br>
 <%= link_to 'New Book', new_book_path %>
