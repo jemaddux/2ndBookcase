@@ -1,15 +1,19 @@
-###Ruby version
+####Ruby version
 
-###System dependencies
+#####Ruby 2.0.0
 
-###Configuration
+####System dependencies
 
-###Database creation
+####Configuration
 
-###Database initialization
+####Database creation
 
-###How to run the test suite
+####Database initialization
 
-###Services (job queues, cache servers, search engines, etc.)
+####How to run the test suite
 
-###Deployment instructions
+#####rspec
+
+####Services (job queues, cache servers, search engines, etc.)
+
+####Deployment instructions
