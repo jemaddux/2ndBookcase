@@ -11,9 +11,9 @@ namespace :db do
     require 'faker'
 
     # Create books's
-    5.times do |x|
+    500.times do |x|
       book = Book.new()
-      book.name = "hey you" #Faker::Name.name
+      book.name = Faker::Name.name
       book.description = Faker::Lorem.paragraph(sentence_count = 3)
       book.rating = rand(0..5)
       book.times_rated = rand(0..100).to_i
