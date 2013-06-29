@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :customers
+
   resources :books
   root to: "books#index"
 
