@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :categories
+
   resources :customers
 
   resources :books
