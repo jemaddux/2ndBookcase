@@ -5,5 +5,38 @@
   <%= @category.name %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Book Name</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Times rated</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for book in @books %>
+      <tr>
+        <td><%= book.name %></td>
+        <td><%= book.author %></td>
+        <td><%= book.description %></td>
+        <td><%= '%.1f' % book.rating %></td>
+        <td><%= book.times_rated %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @books %>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
