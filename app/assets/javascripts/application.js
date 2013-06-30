@@ -17,3 +17,17 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+// This script adds the categories to the top_bar menu
+$.getJSON('/categories.json', function(data) {
+  var items = [];
+  $.each(data, function(key, val) {
+    items.push('<li><a href="' + val["url"].replace(".json",".html") + '">' + val["name"]  + '</a></li>');
+  });
+  if ($("#categories_menu").children('li').length < 3){
+    $('<ul/>', {
+      html: items.join('')
+    }).appendTo('#categories_menu');
+  }
+});
+
