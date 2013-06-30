@@ -11,6 +11,7 @@ gem 'unicorn'
 gem 'pg'
 gem 'simplecov'
 gem 'rspec-rails'
+gem 'zurb-foundation'
 gem 'will_paginate', '> 3.0'
 
 group :development, :test do
