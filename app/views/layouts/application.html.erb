@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SecondBookcase</title>
+  <title>2ndBookshelf.com | All the books your can read.</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<h1>2ndBookshelf.com</h1>
+<ul>
+  <li><%= link_to "List of all books", books_path %></li>
+  <li><%= link_to "List of all Customers", customers_path %></li>
+  <li><%= link_to "Your Profile", customer_path %></li>
+</ul>
+
 
 <%= yield %>
 
