@@ -11,8 +11,14 @@ namespace :db do
     Book.all.each do |book|
       book.delete
     end
+    Category.all.each do |category|
+      category.delete
+    end
     puts "Cleared the database."
   end
+
+  desc "Populate database"
+  task :populate_database => [:populate_categories, :populate_books_table]
 
   desc "Adds all the categories to the database"
   task :populate_categories => :environment do
@@ -29,15 +35,22 @@ namespace :db do
   task :populate_books_table => :environment do
     require 'faker'
 
+    categories = Category.all
+
     # Create books's
-    10_000.times do |x|
-      book = Book.new()
-      book.name = Faker::Name.name
-      book.author = Faker::Name.name
-      book.description = Faker::Lorem.paragraph(sentence_count = 3)
-      book.rating = rand(0.0..5.0)
-      book.times_rated = rand(0..100).to_i
-      book.save!
+    100.times do |x|
+      100.times do |x|
+        book = Book.new()
+        book.name = Faker::Name.name
+        book.author = Faker::Name.name
+        book.categories << categories.shuffle.first
+        book.categories << categories.shuffle.last
+        book.description = Faker::Lorem.paragraph(sentence_count = 3)
+        book.rating = rand(0.0..5.0)
+        book.times_rated = rand(0..100).to_i
+        book.save!
+      end
+      print "."
     end
     puts "Added 10,000 books."
   end
