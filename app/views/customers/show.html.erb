@@ -1,49 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
+First name: <%= @customer.first_name %><br>
+Last name: <%= @customer.last_name %><br>
+Email: <%= @customer.email %><br>
+Street address: <%= @customer.street_address %><br>
+City: <%= @customer.city %><br>
+State: <%= @customer.state %><br>
+Zipcode: <%= @customer.zipcode %><br>
+Account status: <%= @customer.account_status %><br>
+Rental plan: <%= @customer.rental_plan %><br>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+<br><br><br><br>
 
-<p>
-  <strong>Street address:</strong>
-  <%= @customer.street_address %>
-</p>
+Your current payment method is:
+MasterCard XXXX-XXXX-XXXX-XX42
+Exp Date: 08-84
+Address
+744 72nd St
+New York, NY
 
-<p>
-  <strong>City:</strong>
-  <%= @customer.city %>
-</p>
+<%= link_to "Edit/Upgrade your Account", "#" %><br>
+<br>
+Your current acount gives you XXX books at a time.<br>
+<br>
+Your account will renew on ----Date every month-----.<br>
+<br>
+Your current books that are out on loan:<br>
+  ---Some stupid Childrens' book for dumb babies.<br>
+  ---Country Life: Shotguns and Geezeus.<br>
 
-<p>
-  <strong>State:</strong>
-  <%= @customer.state %>
-</p>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @customer.zipcode %>
-</p>
-
-<p>
-  <strong>Account status:</strong>
-  <%= @customer.account_status %>
-</p>
-
-<p>
-  <strong>Rental plan:</strong>
-  <%= @customer.rental_plan %>
-</p>
+<br><br><br><br>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
