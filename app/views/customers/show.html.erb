@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-First name: <%= @customer.first_name %><br>
-Last name: <%= @customer.last_name %><br>
+Name: <%= @customer.first_name %> <%= @customer.last_name %><br>
 Email: <%= @customer.email %><br>
 Street address: <%= @customer.street_address %><br>
 City: <%= @customer.city %><br>
@@ -10,16 +9,16 @@ State: <%= @customer.state %><br>
 Zipcode: <%= @customer.zipcode %><br>
 Account status: <%= @customer.account_status %><br>
 Rental plan: <%= @customer.rental_plan %><br>
-
-<br><br><br><br>
-
-Your current payment method is:
-MasterCard XXXX-XXXX-XXXX-XX42
-Exp Date: 08-84
-Address
-744 72nd St
-New York, NY
-
+<br><br>
+Your current payment method is:<br>
+MasterCard XXXX-XXXX-XXXX-XX42<br>
+Exp Date: 08-84<br>
+Address<br>
+744 72nd St<br>
+New York, NY<br>
+<br>
+Alert: You have been a member for a year so for the next two months your plan has been upgraded to three books per month.<br>
+<br>
 <%= link_to "Edit/Upgrade your Account", "#" %><br>
 <br>
 Your current acount gives you XXX books at a time.<br>
@@ -29,9 +28,6 @@ Your account will renew on ----Date every month-----.<br>
 Your current books that are out on loan:<br>
   ---Some stupid Childrens' book for dumb babies.<br>
   ---Country Life: Shotguns and Geezeus.<br>
-
-
-<br><br><br><br>
-
+<br><br>
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
