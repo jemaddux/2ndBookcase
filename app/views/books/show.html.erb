@@ -20,5 +20,10 @@
   <%= @book.times_rated %>
 </p>
 
+<p>
+  <strong>Inventory Count</strong>
+  <%= @book.inventories.count %>
+</p>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

@@ -11,14 +11,21 @@ namespace :db do
     Book.all.each do |book|
       book.delete
     end
+    puts "Cleared books."
     Category.all.each do |category|
       category.delete
     end
+    puts "Cleared categories."
+    Inventory.all.each do |inventory|
+      inventory.delete
+    end
+    puts "Cleared inventory."
     puts "Cleared the database."
   end
 
   desc "Populate database"
-  task :populate_database => [:populate_categories, :populate_books_table]
+  task :populate_database => [:populate_categories, :populate_books_table,
+                              :populate_inventory]
 
   desc "Adds all the categories to the database"
   task :populate_categories => :environment do
@@ -51,5 +58,22 @@ namespace :db do
       print "." if x % 100 == 0
     end
     puts "Added 10,000 books."
+  end
+
+  desc "Add inventory"
+  task :populate_inventory => :environment do
+    conditions = ["new", "good", "decent", "well loved", "retired"]
+
+    50_000.times do |num|
+      inventory = Inventory.new
+      inventory.condition = conditions[rand(0..4)]
+      inventory.checked_out = false
+      inventory.save!
+
+      book = Book.offset(rand(Book.count)).first
+      book.inventories << inventory
+      print "." if num % 100 == 0
+    end
+    puts "Added 50,000 inventory items."
   end
 end

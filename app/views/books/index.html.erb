@@ -8,6 +8,7 @@
       <th>Description</th>
       <th>Rating</th>
       <th>Times rated</th>
+      <th>Inventory Count</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,6 +23,7 @@
         <td><%= book.description %></td>
         <td><%= '%.1f' % book.rating %></td>
         <td><%= book.times_rated %></td>
+        <td><%= book.inventories.count %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
