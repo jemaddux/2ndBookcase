@@ -9,7 +9,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'unicorn'
 gem 'pg'
-gem 'simplecov'
 gem 'rspec-rails'
 gem 'zurb-foundation'
 gem 'will_paginate', '> 3.0'
@@ -17,6 +16,10 @@ gem 'will_paginate', '> 3.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'faker'
+end
+
+group :test do
+  gem 'simplecov', :require => false
 end
 
 group :doc do
