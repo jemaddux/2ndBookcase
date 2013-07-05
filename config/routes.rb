@@ -1,4 +1,5 @@
 SecondBookcase::Application.routes.draw do
+  get "sessions/new"
   resources :inventories
 
   resources :categories

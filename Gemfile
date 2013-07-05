@@ -12,8 +12,12 @@ gem 'pg'
 gem 'rspec-rails'
 gem 'zurb-foundation'
 gem 'will_paginate', '> 3.0'
+gem 'bcrypt-ruby', '> 3.0'
+gem 'protected_attributes'
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'sqlite3'
   gem 'faker'
 end

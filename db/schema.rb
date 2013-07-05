@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130703033002) do
+ActiveRecord::Schema.define(version: 20130704234457) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -46,7 +46,14 @@ ActiveRecord::Schema.define(version: 20130703033002) do
     t.string   "rental_plan"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.string   "password_digest"
   end
+
+  add_index "customers", ["remember_me_token"], name: "index_customers_on_remember_me_token"
 
   create_table "inventories", force: true do |t|
     t.integer  "book_id"
