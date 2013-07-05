@@ -4,31 +4,25 @@
   <strong><%= @category.name %></strong>
 </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Book Name</th>
-      <th>Author</th>
-      <th>Description</th>
-      <th>Rating</th>
-      <th>Times rated</th>
-    </tr>
-  </thead>
+<ul class="large-block-grid-4">
+  <% for book in @books %>
+    <li>
 
-  <tbody>
-    <% for book in @books %>
-      <tr>
-        <td><%= image_tag("hobbit.jpg", class: "book_cover") %></td>
-        <td><%= book.name %></td>
-        <td><%= book.author %></td>
-        <td><%= book.description %></td>
-        <td><%= '%.1f' % book.rating %></td>
-        <td><%= book.times_rated %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <%= image_tag("hobbit.jpg", class: "book_cover") %><br/>
+      <%= book.name %><br/>
+      By: <%= book.author %><br/>
+      <%= book.description %><br/>
+      <%= '%.1f' % book.rating %><br/>
+      <% if book.inventories.count > 0 %>
+        In Stock
+      <% else %>
+        Out of Stock
+      <% end %>
+      Add to Queue
+    </li>
+  <% end %>
+</ul>
+
 
 <br>
 <%= will_paginate @books %>
