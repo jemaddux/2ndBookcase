@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @books = @category.books.page(params[:page]).per_page(50)
+    @books = @category.books.page(params[:page]).per_page(24)
   end
 
   # GET /categories/new
