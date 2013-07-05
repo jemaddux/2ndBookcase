@@ -1274,8 +1274,17 @@ $topbar-bg: #212D48 !default;
 
 .book_cover {
   width: 150px;
+  float: left;
+  margin: 5px;
 }
 
+.book_title {
+  margin: 0px;
+}
+
+.author_name {
+  margin: 0px;
+}
 
 @import 'foundation';
 

@@ -3,18 +3,17 @@
 <ul class="large-block-grid-4">
   <% for book in @books %>
     <li>
-
-      <%= image_tag("hobbit.jpg", class: "book_cover") %><br/>
-      <%= book.name %><br/>
-      By: <%= book.author %><br/>
-      <%= book.description %><br/>
+      <%= image_tag("#{rand(0..30)}.jpg", class: "book_cover") %><br/>
+      <h3 class="book_title"><%= book.name %></h3>
+      <h5 class="author_name">By: <%= book.author %></h5>
+      <p><%= book.description[0..80] %></p>
       <%= '%.1f' % book.rating %><br/>
       <% if book.inventories.count > 0 %>
-        In Stock
+        In Stock <br>
       <% else %>
-        Out of Stock
+        Out of Stock <br>
       <% end %>
-      Add to Queue
+      <%= link_to "Add to Queue", "#", class: "small success button" %>
     </li>
   <% end %>
 </ul>
