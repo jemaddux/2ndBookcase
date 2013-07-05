@@ -16,6 +16,7 @@ gem 'bcrypt-ruby', '> 3.0'
 gem 'protected_attributes'
 
 group :development, :test do
+  gem 'rack-mini-profiler'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
