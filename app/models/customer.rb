@@ -9,7 +9,7 @@ class Customer < ActiveRecord::Base
     customer = Customer.new
     customer.password = params["customer"]["password"]
     customer.password_confirmation = params["customer"]["password_confirmation"]
-    customer.email = params["customer"]["email"]
+    customer.email = params["customer"]["email"].downcase
     customer.first_name = params["customer"]["first_name"]
     customer.last_name = params["customer"]["last_name"]
     customer.street_address = params["customer"]["street_address"]

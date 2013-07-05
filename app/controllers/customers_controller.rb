@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize, only: [:show, :edit]
 
   # GET /customers
   # GET /customers.json
@@ -28,6 +29,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        session[:customer_id] = @customer.id
         format.html { redirect_to @customer }
         format.json { render action: 'show', status: :created, location: @customer }
       else
