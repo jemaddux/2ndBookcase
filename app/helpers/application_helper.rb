@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def current_user
-    "Fry"
+  def find_book(id)
+    @book = Book.find(id)
   end
 
 end
