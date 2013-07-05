@@ -31,9 +31,14 @@
 
       <% if current_user %>
         <li  class="has-dropdown">
-          <%= link_to current_user.first_name, customer_path(current_user) %>
+          <% if current_user.first_name != "" %>
+            <%= link_to current_user.first_name, customer_path(current_user) %>
+          <% else %>
+            <%= link_to "Your Account", customer_path(current_user) %>
+          <% end %>
           <ul class="dropdown">
-            <li class="has-dropdown"><a href="#" class="">Dropdown Level 1a</a>
+            <li><a href="#">Reading List</a></li>
+            <li class="has-dropdown"><a href="#" class="">Dropdown Level 1b</a>
 
               <ul class="dropdown">
                 <li><a href="#">Dropdown Level 2a</a></li>
@@ -51,7 +56,6 @@
                 <li><a href="#">Dropdown Level 2f</a></li>
               </ul>
             </li>
-            <li><a href="#">Dropdown Level 1b</a></li>
             <li><a href="#">Dropdown Level 1c</a></li>
             <li class="divider"></li>
             <li><label>Dropdown Level 1 Label</label></li>
