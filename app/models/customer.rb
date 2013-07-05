@@ -1,5 +1,6 @@
 class Customer < ActiveRecord::Base
   has_secure_password
+  has_many :reading_lists
 
   attr_accessible :email, :password, :password_confirmation
 
