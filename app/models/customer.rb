@@ -21,4 +21,9 @@ class Customer < ActiveRecord::Base
     customer.rental_plan = params["customer"]["rental_plan"]
     customer
   end
+
+  def reading_list
+    reading_list_items = Customer.find(id).reading_lists
+    @books = Book.where(id: reading_list_items.select {|item| item.id})
+  end
 end

@@ -1,10 +1,24 @@
-<h1>Reading List</h1>
+<div class="row">
+  <h3>Your Reading List</h3>
+</div>
 
-<ul>
-  <% @customer.reading_lists.each do |item| %>
-    <li><%= item.out_on_loan %></li>
-    <li><%= find_book(item.id).name %></li>
-  <% end %>
-</ul>
+<% @books.each do |book| %>
+  <div class="row">
+    <div class="large-2 columns small-3">
+      <%= image_tag("#{rand(0..30)}.jpg", class: "book_cover") %>
+    </div>
+    <div class="large-10 columns">
+      <p>
+        <strong><%= book.name %></strong> by: <%= book.author %><br>
+        <%= book.description %>
+      </p>
+      <ul class="inline-list">
+      <li><a href="">Reply</a></li>
+      <li><a href="">Share</a></li>
+      </ul>
+    </div>
+    <hr />
+  </div>
+<% end %>
 
-<%= image_tag("hobbit.jpg", class: "book_cover") %>
+<br><br><br><br><br><br><br>

@@ -3,8 +3,7 @@ class ReadingListsController < ApplicationController
   # POST /reading_lists.json
 
   def create
-    fail
-    @reading_list = ReadingList.create_list_item(params)
+    ReadingList.create_list_item(params)
 
     redirect_to :back
   end
