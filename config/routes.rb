@@ -10,7 +10,7 @@ SecondBookcase::Application.routes.draw do
   resources :categories
   resources :customers
   resources :books
-  root to: "home#frontpage"
+  root to: "books#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
