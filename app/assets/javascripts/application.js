@@ -36,11 +36,12 @@ $('.add_to_reading_list').submit(function(event) {
   $.ajax({
     type: "POST",
     url: "/reading_lists",
-    data: $(this).serialize(), // serializes the form's elements.
+    data: $(this).serialize(),
     success: function(data){
-      alert("derp"); // show response from the php script.
+
     }
   });
+  alert("change the button");
 });
 
 

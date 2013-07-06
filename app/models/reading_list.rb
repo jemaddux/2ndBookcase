@@ -15,4 +15,5 @@ class ReadingList < ActiveRecord::Base
     rl_item.out_on_loan = false
     rl_item
   end
+
 end
