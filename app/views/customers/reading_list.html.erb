@@ -5,7 +5,7 @@
 <% @books.each do |book| %>
   <div class="row">
     <div class="large-3 columns small-3">
-      <%= image_tag("#{rand(0..30)}.jpg", class: "book_cover") %>
+      <%= image_tag("#{rand(0..100)}.jpg", class: "book_cover") %>
     </div>
     <div class="large-9 columns">
       <strong><%= book.name %></strong> by: <%= book.author %><br>
