@@ -12,13 +12,8 @@
   <% end %>
 
   <%= form_tag(reading_lists_path, method: "POST") do %>
-    <%= hidden_field_tag(:book_id) %>
-    <%= hidden_field_tag(:customer_id) %>
+    <%= hidden_field_tag(:book_id, book.id)  %>
+    <%= hidden_field_tag(:customer_id, current_customer.id) %>
     <%= submit_tag("Add to Reading List", class: "small success button") %>
   <% end %>
-
-
-
 </li>
-
-
