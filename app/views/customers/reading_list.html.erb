@@ -10,7 +10,7 @@
     <div class="large-9 columns">
       <strong><%= book.name %></strong> by: <%= book.author %><br>
       <p>
-        <%= book.description %>
+        <%= book.description[0..600] %>
       </p>
       <ul class="inline-list">
         <li><%= link_to "Move Up", "#" %></li>
