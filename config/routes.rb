@@ -4,6 +4,7 @@ SecondBookcase::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'reading_list', to: 'customers#reading_list', as: 'reading_list'
 
+  resources :reading_lists
   resources :inventories
   resources :sessions
   resources :categories

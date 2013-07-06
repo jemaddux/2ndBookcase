@@ -1,6 +1,9 @@
 <div id="books_page">
   <h2>All Books</h2>
 
+  <%= @some_params.inspect %>
+  <%= params.inspect %>
+
   <ul class="large-block-grid-4">
     <% for book in @books %>
       <%= render partial: "book", :locals => {:book => book} %>

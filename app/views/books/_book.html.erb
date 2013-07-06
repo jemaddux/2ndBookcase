@@ -10,6 +10,15 @@
   <% else %>
     Out of Stock <br>
   <% end %>
-  <%= link_to "Add to Reading List", "#", class: "small success button" %>
+
+  <%= form_tag(reading_lists_path, method: "POST") do %>
+    <%= hidden_field_tag(:book_id) %>
+    <%= hidden_field_tag(:customer_id) %>
+    <%= submit_tag("Add to Reading List", class: "small success button") %>
+  <% end %>
+
+
 
 </li>
+
+
