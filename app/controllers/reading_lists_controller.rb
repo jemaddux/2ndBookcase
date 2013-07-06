@@ -4,8 +4,6 @@ class ReadingListsController < ApplicationController
 
   def create
     ReadingList.create_list_item(params)
-
-    redirect_to :back
   end
 
   # def create
