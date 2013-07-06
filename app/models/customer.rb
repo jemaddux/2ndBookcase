@@ -24,6 +24,6 @@ class Customer < ActiveRecord::Base
 
   def reading_list
     reading_list_items = Customer.find(id).reading_lists
-    @books = Book.where(id: reading_list_items.select {|item| item.id})
+    Book.where(id: reading_list_items.select {|item| item.id})
   end
 end
