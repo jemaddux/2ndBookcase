@@ -3,7 +3,10 @@ class ReadingListsController < ApplicationController
   # POST /reading_lists.json
 
   def create
-    ReadingList.create_list_item(params)
+    @reading_list_item = ReadingList.create_list_item(params)
+    @reading_list_item.save
+
+    # redirect_to "#"
   end
 
   # def create

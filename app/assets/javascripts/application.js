@@ -31,6 +31,19 @@ $.getJSON('/categories.json', function(data) {
   }
 });
 
+$('.add_to_reading_list').submit(function(event) {
+  event.preventDefault();
+  $.ajax({
+    type: "POST",
+    url: "/reading_lists",
+    data: $(this).serialize(), // serializes the form's elements.
+    success: function(data){
+      alert("derp"); // show response from the php script.
+    }
+  });
+});
+
+
 
 
 

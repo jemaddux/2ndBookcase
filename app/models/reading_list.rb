@@ -13,6 +13,6 @@ class ReadingList < ActiveRecord::Base
     rl_item.loan_out_date = nil
     rl_item.returned_date = nil
     rl_item.out_on_loan = false
-    rl_item.save!
+    rl_item
   end
 end
