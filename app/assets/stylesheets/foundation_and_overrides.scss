@@ -1304,12 +1304,25 @@ $topbar-bg: #212D48 !default;
   margin: auto;
 }
 
-.percent_80 {
+.percent_80_center {
   width: 80%;
   margin: auto;
 }
 
-.percent_20 {
+.percent_50_center {
+  width: 50%;
+  margin: auto;
+}
+
+.percent_50 {
+  width: 50%;
+}
+
+.float_right {
+  float: right;
+}
+
+.percent_20_center {
   width: 20%;
   margin: auto;
 }
