@@ -41,7 +41,8 @@ $('.add_to_reading_list').submit(function(event) {
 
     }
   });
-  alert("Book added to reading list.");
+  $(this).children(".button").attr("class", "small button");
+  $(this).children(".button").attr("value","Added to Reading List!");
 });
 
 
