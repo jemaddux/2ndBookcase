@@ -41,7 +41,7 @@ $('.add_to_reading_list').submit(function(event) {
 
     }
   });
-  alert("change the button");
+  alert("Book added to reading list.");
 });
 
 
