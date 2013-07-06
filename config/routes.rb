@@ -3,6 +3,7 @@ SecondBookcase::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'reading_list', to: 'customers#reading_list', as: 'reading_list'
+  post 'reading_list/:book_id', to: 'reading_lists#update', as: 'update_reading_list'
 
   resources :reading_lists
   resources :inventories

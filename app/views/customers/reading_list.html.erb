@@ -13,7 +13,7 @@
         <%= book.description[0..600] %>
       </p>
       <ul class="inline-list">
-        <li><%= link_to "Remove from list", "#" %></a></li>
+        <li><%= link_to "Remove from list", update_reading_list_path(book.id), method: "POST" %></a></li>
       </ul>
     </div>
     <hr />

@@ -22,8 +22,28 @@ class Customer < ActiveRecord::Base
     customer
   end
 
-  def reading_list
-    reading_list_items = Customer.find(id).reading_lists
-    Book.where(id: reading_list_items.select {|item| item.id})
+  def reading_list_books
+    reading_list_items = Customer.find(id).reading_lists.where(in_list: true, out_on_loan: false)
+    book_ids = reading_list_items.map {|item| item.book_id}
+    Book.where(id: book_ids)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

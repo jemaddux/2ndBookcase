@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
 
   # GET /reading_list
   def reading_list
-    @books = current_customer.reading_list
+    @books = current_customer.reading_list_books
   end
 
   # POST /customers
