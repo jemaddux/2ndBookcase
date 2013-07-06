@@ -1272,10 +1272,15 @@ $topbar-bg: #212D48 !default;
 
 // Custom CSS
 
+.book_li{
+}
+
 .book_cover {
   width: 150px;
+  height: 200px;
   float: left;
-  margin: 5px;
+  margin-right: 5px;
+  overflow: hidden;
 }
 
 .book_title {

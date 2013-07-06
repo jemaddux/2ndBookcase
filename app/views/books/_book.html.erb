@@ -1,0 +1,15 @@
+<li class="book_li">
+  <%= image_tag("#{rand(0..30)}.jpg", class: "book_cover") %>
+
+  <h5 class="book_title"><%= book.name %></h5>
+  <h5 class="author_name">By: <%= book.author %></h5>
+  <p><%= book.description[0..80] %></p>
+  <%= '%.1f' % book.rating %>
+  <% if book.inventories.count > 0 %>
+    In Stock <br>
+  <% else %>
+    Out of Stock <br>
+  <% end %>
+  <%= link_to "Add to Reading List", "#", class: "small success button" %>
+
+</li>

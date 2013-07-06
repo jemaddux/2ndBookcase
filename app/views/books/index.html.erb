@@ -1,21 +1,9 @@
 <div id="books_page">
-  <h1>All Books</h1>
+  <h2>All Books</h2>
 
   <ul class="large-block-grid-4">
     <% for book in @books %>
-      <li>
-        <%= image_tag("#{rand(0..30)}.jpg", class: "book_cover") %><br/>
-        <h3 class="book_title"><%= book.name %></h3>
-        <h5 class="author_name">By: <%= book.author %></h5>
-        <p><%= book.description[0..80] %></p>
-        <%= '%.1f' % book.rating %><br/>
-        <% if book.inventories.count > 0 %>
-          In Stock <br>
-        <% else %>
-          Out of Stock <br>
-        <% end %>
-        <%= link_to "Add to Reading List", "#", class: "small success button" %>
-      </li>
+      <%= render partial: "book", :locals => {:book => book} %>
     <% end %>
   </ul>
 
