@@ -1,33 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="percent_80_center">
+  <h3><%= @customer.first_name %> <%= @customer.last_name %></h3>
 
+  <ul class="vcard">
+    <li class="street-address"><%= @customer.street_address %></li>
+    <li class="locality">
+      <%= @customer.city %>, <%= @customer.state %> <%= @customer.zipcode %>
+    </li>
+    <li>Rental plan: <%= @customer.rental_plan %></li>
+    <li class="email"><%= @customer.email %></li>
+  </ul>
 
-Name: <%= @customer.first_name %> <%= @customer.last_name %><br>
-Email: <%= @customer.email %><br>
-Street address: <%= @customer.street_address %><br>
-City: <%= @customer.city %><br>
-State: <%= @customer.state %><br>
-Zipcode: <%= @customer.zipcode %><br>
-Account status: <%= @customer.account_status %><br>
-Rental plan: <%= @customer.rental_plan %><br>
-<br><br>
-Your current payment method is:<br>
-MasterCard XXXX-XXXX-XXXX-XX42<br>
-Exp Date: 08-84<br>
-Address<br>
-744 72nd St<br>
-New York, NY<br>
-<br>
-Alert: You have been a member for a year so for the next two months your plan has been upgraded to three books per month.<br>
-<br>
-<%= link_to "Edit/Upgrade your Account", "#" %><br>
-<br>
-Your current acount gives you XXX books at a time.<br>
-<br>
-Your account will renew on ----Date every month-----.<br>
-<br>
-Your current books that are out on loan:<br>
-  ---Some stupid Childrens' book for dumb babies.<br>
-  ---Country Life: Shotguns and Geezeus.<br>
-<br><br>
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+  <br>
+  <ul class="vcard">
+    <li class="fn">Your current payment method is:</li>
+    <li>MasterCard XXXX-XXXX-XXXX-XX42</li>
+    <li>Exp Date: 08-84</li>
+    <li>Address</li>
+    <li>744 72nd St</li>
+    <li>New York, NY</li>
+  </ul>
+</div>
