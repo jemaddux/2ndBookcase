@@ -13,6 +13,7 @@ gem 'zurb-foundation'
 gem 'will_paginate', '> 3.0'
 gem 'bcrypt-ruby', '> 3.0'
 gem 'protected_attributes'
+gem 'stripe'
 
 group :development, :test do
   gem 'rack-mini-profiler'
