@@ -37,7 +37,8 @@ namespace :db do
 
   desc "Populate database"
   task :populate_database => [:populate_categories, :populate_books,
-          :populate_inventory, :populate_customers, :populate_reading_lists]
+          :populate_inventory, :populate_plans, :populate_customers,
+          :populate_reading_lists]
 
   desc "Adds all the categories to the database"
   task :populate_categories => :environment do
@@ -94,6 +95,26 @@ namespace :db do
     puts "Added 50,000 inventory items."
   end
 
+  desc "Add Plans"
+  task :populate_plans => :environment do
+    plan1 = Plan.new
+    plan1.cost = 11.00
+    plan1.description = "One book out at a time."
+    plan1.save
+    plan2 = Plan.new
+    plan2.cost = 18.00
+    plan2.description = "Two books out at a time."
+    plan2.save
+    plan3 = Plan.new
+    plan3.cost = 25.00
+    plan3.description = "Three books out at a time."
+    plan3.save
+    plan4 = Plan.new
+    plan4.cost = 33.00
+    plan4.description = "Four books out at a time."
+    plan4.save
+  end
+
   desc "Add Customers"
   task :populate_customers => :environment do
     require 'faker'
@@ -111,8 +132,8 @@ namespace :db do
       customer.city = Faker::Address.city
       customer.state = Faker::Address.state_abbr
       customer.zipcode = Faker::Address.zip_code
-      customer.account_status = "pending payment method"
-      customer.rental_plan = "2"
+      customer.account_status = "payment current"
+      customer.plan_id = rand(1..4)
       customer.save!
       print "." if num % 100 == 0
     end

@@ -20,6 +20,7 @@ class Customer < ActiveRecord::Base
     customer.state = params["customer"]["state"]
     customer.zipcode = params["customer"]["zipcode"]
     customer.account_status = "pending payment method"
+    customer.plan_id = params["customer"]["plan_id"]
     customer
   end
 
