@@ -23,36 +23,26 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.create_customer(params)
 
-    respond_to do |format|
-      if @customer.save
-        session[:customer_id] = @customer.id
-        format.html { redirect_to @customer }
-        format.json { render action: 'show', status: :created, location: @customer }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.save
+      session[:customer_id] = @customer.id
+      redirect_to new_subscription_path
+    else
+      render action: 'new'
+      render json: @customer.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.update(customer_params)
+      redirect_to @customer, notice: 'Customer was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url }
-      format.json { head :no_content }
-    end
+    redirect_to customers_url
   end
 
   private
