@@ -5,6 +5,8 @@ class Customer < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
 
   validates_uniqueness_of :email
+  validates_presence_of :first_name, :last_name, :street_address, :city,
+                        :state, :zipcode
 
   def self.create_customer(params)
     customer = Customer.new
@@ -18,7 +20,6 @@ class Customer < ActiveRecord::Base
     customer.state = params["customer"]["state"]
     customer.zipcode = params["customer"]["zipcode"]
     customer.account_status = "pending payment method"
-    customer.rental_plan = params["customer"]["rental_plan"]
     customer
   end
 
