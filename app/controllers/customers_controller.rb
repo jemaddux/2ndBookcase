@@ -2,33 +2,24 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_filter :authorize, only: [:show, :edit]
 
-  # GET /customers
-  # GET /customers.json
   def index
     @customers = Customer.all.page(params[:page]).per_page(50)
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
   def show
   end
 
-  # GET /customers/new
   def new
     @customer = Customer.new
   end
 
-  # GET /customers/1/edit
   def edit
   end
 
-  # GET /reading_list
   def reading_list
     @books = current_customer.reading_list_books
   end
 
-  # POST /customers
-  # POST /customers.json
   def create
     @customer = Customer.create_customer(params)
 
@@ -44,8 +35,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
     respond_to do |format|
       if @customer.update(customer_params)
@@ -58,8 +47,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     @customer.destroy
     respond_to do |format|
@@ -69,12 +56,10 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :email, :street_address, :city, :state, :zipcode, :account_status, :rental_plan)
     end
