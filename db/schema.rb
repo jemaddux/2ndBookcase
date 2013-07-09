@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709202535) do
+ActiveRecord::Schema.define(version: 20130709205331) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20130709202535) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "in_list",            default: true
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "plan_id"
+    t.integer  "customer_id"
+    t.string   "stripe_card_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

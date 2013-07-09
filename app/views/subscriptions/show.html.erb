@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @subscription.plan_id %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @subscription.customer_id %>
+</p>
+
+<p>
+  <strong>Stripe card token:</strong>
+  <%= @subscription.stripe_card_token %>
+</p>
+
+<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+<%= link_to 'Back', subscriptions_path %>
