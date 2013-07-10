@@ -33,6 +33,7 @@
             <%= link_to "Your Account", customer_path(current_user) %>
           <% end %>
           <ul class="dropdown">
+            <li><%= link_to "Your Account", customer_path(current_user) %></li>
             <li><%= link_to "Customers", customers_path %></li>
             <li class="divider"></li>
             <li><%= link_to "Logout", logout_path %></li>
