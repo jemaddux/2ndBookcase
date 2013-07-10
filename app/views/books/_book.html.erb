@@ -5,13 +5,11 @@
   <h5 class="author_name">By: <%= book.author %></h5>
   <p><%= book.description[0..80] %></p>
 
-  <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
-    <%= hidden_field_tag(:book_id, book.id)  %>
-    <% if current_customer %>
+  <% if current_customer %>
+    <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
+      <%= hidden_field_tag(:book_id, book.id)  %>
       <%= hidden_field_tag(:customer_id, current_customer.id ) %>
-    <% else %>
-      <%= hidden_field_tag(:customer_id, nil ) %>
+      <%= submit_tag("Add to Reading List", class: "small success button") %>
     <% end %>
-    <%= submit_tag("Add to Reading List", class: "small success button") %>
   <% end %>
 </li>
