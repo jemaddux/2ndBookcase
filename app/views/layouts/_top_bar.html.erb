@@ -14,7 +14,7 @@
       <li class="has-dropdown"><a href="#">Categories</a>
 
         <ul class="dropdown" id="categories_menu">
-          <!-- Ajax Automatically adds categories here -->
+          <!-- Ajax Automagically adds categories here -->
         </ul>
       </li>
       <li class="divider"></li>
@@ -25,6 +25,7 @@
       <li class="divider hide-for-small"></li>
 
       <% if current_user %>
+        <li><%= link_to "Reading List", reading_list_path %></a></li>
         <li  class="has-dropdown">
           <% if current_user.first_name != "" %>
             <%= link_to current_user.first_name, customer_path(current_user) %>
@@ -32,7 +33,6 @@
             <%= link_to "Your Account", customer_path(current_user) %>
           <% end %>
           <ul class="dropdown">
-            <li><%= link_to "Reading List", reading_list_path %></a></li>
             <li><%= link_to "Customers", customers_path %></li>
             <li class="divider"></li>
             <li><%= link_to "Logout", logout_path %></li>

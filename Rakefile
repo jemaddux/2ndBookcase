@@ -65,7 +65,7 @@ namespace :db do
       book.author = Faker::Name.name
       book.categories << categories.shuffle.first
       book.categories << categories.shuffle.last
-      book.description = Faker::Lorem.paragraph(sentence_count = 3)
+      book.description = Faker::Lorem.paragraph(sentence_count = 30)
       book.rating = rand(0.0..5.0)
       book.times_rated = rand(0..100).to_i
       book.save!
@@ -135,6 +135,14 @@ namespace :db do
       customer.account_status = "payment current"
       customer.plan_id = rand(1..4)
       customer.save!
+
+      subscription = Subscription.new
+      subscription.customer_id = customer.id
+      subscription.plan_id = customer.plan_id
+      subscription.stripe_card_token = "xyz"
+      subscription.stripe_customer_token = customer.id
+      subscription.save!
+
       print "." if num % 100 == 0
     end
     puts ""
