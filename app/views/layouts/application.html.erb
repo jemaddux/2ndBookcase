@@ -9,8 +9,9 @@
   	<title><%= content_for?(:title) ? yield(:title) : "2ndBookshelf" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+  	<%= javascript_include_tag "https://js.stripe.com/v1/", "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
+    <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
   </head>
   <body>
 

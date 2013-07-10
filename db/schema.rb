@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709205331) do
+ActiveRecord::Schema.define(version: 20130709234754) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20130709205331) do
     t.string   "stripe_card_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stripe_customer_token"
   end
 
 end

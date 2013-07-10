@@ -1,5 +1,7 @@
-<h1>New subscription</h1>
+<div class="percent_50_center">
+  <h1>Add Payment Method</h1>
+  <h3>Plan: <%= find_plan(current_customer.plan_id).description %></h3>
+  <h3>Cost: <%= number_to_currency(find_plan(current_customer.plan_id).cost, locale: :us) %> per month</h3>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', subscriptions_path %>
+  <%= render 'form' %>
+</div>
