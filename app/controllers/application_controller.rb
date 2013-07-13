@@ -3,8 +3,12 @@ class ApplicationController < ActionController::Base
 
 private
 
+  def current_admin
+    @admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+  end
+
   def current_customer
-    @customer = Customer.find(session[:customer_id]) if session[:customer_id]
+    @customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
   end
 
   def current_user
@@ -17,5 +21,5 @@ private
 
   helper_method :current_customer
   helper_method :current_user
-
+  helper_method :current_admin
 end

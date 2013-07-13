@@ -43,12 +43,16 @@ namespace :db do
   desc "Adds all the categories to the database"
   task :populate_categories => :environment do
     category_names = ["Arts & Photography", "Biographies & Memoirs", "Business & Investing", "Children's Books", "Christian Books & Bibles", "Comics & Graphic Novels", "Computers & Technology", "Cookbooks, Food & Wine", "Crafts, Hobbies & Home", "Education & Reference", "Gay & Lesbian", "Health, Fitness & Dieting", "History", "Humor & Entertainment", "Law", "Literature & Fiction", "Medical Books", "Mystery, Thriller & Suspense", "Parenting & Relationships", "Politics & Social Sciences", "Professional & Technical", "Religion & Spirituality", "Romance", "Science & Math", "Science Fiction & Fantasy", "Self-Help", "Sports & Outdoors", "Teen & Young Adult", "Travel"]
-    category_names.each do |category_name|
-      category = Category.new()
-      category.name = category_name
-      category.save!
+    if Category.all.count == 0
+      category_names.each do |category_name|
+        category = Category.new()
+        category.name = category_name
+        category.save!
+      end
+      puts "Created categories."
+    else
+      puts "Categories already created."
     end
-    puts "Created categories."
   end
 
   desc "Add books to the books table in the database"

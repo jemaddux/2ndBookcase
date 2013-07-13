@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :admins
+
   resources :subscriptions
 
   get 'signup', to: 'customers#new', as: 'signup'

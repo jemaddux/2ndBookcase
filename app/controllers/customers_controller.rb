@@ -28,7 +28,6 @@ class CustomersController < ApplicationController
       redirect_to new_subscription_path
     else
       render action: 'new'
-      render json: @customer.errors, status: :unprocessable_entity
     end
   end
 
