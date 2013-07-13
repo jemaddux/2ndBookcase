@@ -6,6 +6,9 @@ SecondBookcase::Application.routes.draw do
   get 'signup', to: 'customers#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'admin_login', to: 'sessions#new_admin', as: "admin_login"
+  get 'admin_logout', to: 'sessions#destroy_admin', as: "admin_logout"
+  post 'admin_session_create', to: 'sessions#create_admin', as: "admin_session_create"
   get 'reading_list', to: 'customers#reading_list', as: 'reading_list'
   post 'reading_list/:book_id', to: 'reading_lists#update', as: 'update_reading_list'
 

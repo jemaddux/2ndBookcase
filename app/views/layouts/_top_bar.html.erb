@@ -24,8 +24,9 @@
     <ul class="right">
       <li class="divider hide-for-small"></li>
 
-      <% if true #current_admin %>
-        <li><%= link_to "Admins", admins_path %></a></li>
+      <% if current_admin %>
+        <li><%= link_to "Admin", admins_path %></a></li>
+        <li><%= link_to "Customers", customers_path %></li>
       <% end %>
       <% if current_user %>
         <li><%= link_to "Reading List", reading_list_path %></a></li>
@@ -37,7 +38,6 @@
           <% end %>
           <ul class="dropdown">
             <li><%= link_to "Your Account", customer_path(current_user) %></li>
-            <li><%= link_to "Customers", customers_path %></li>
             <li class="divider"></li>
             <li><%= link_to "Logout", logout_path %></li>
           </ul>
