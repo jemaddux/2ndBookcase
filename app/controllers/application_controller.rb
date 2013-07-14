@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
 private
 
+  def authorize
+    redirect_to root_url if current_admin.nil?
+  end
+
   def current_admin
     @admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
   end
