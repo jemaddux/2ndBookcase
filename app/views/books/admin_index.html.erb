@@ -1,0 +1,27 @@
+<div id="books_page">
+  <h2>All Books</h2>
+
+  <table>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Short Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
+    <% for book in @books %>
+      <tr>
+        <td><%= book.name %></td>
+        <td><%= book.author %></td>
+        <td><%= book.description[0..50] %></td>
+        <td><%= link_to "Show", book_path(book) %></td>
+        <td><%= link_to "Edit", edit_book_path(book) %></td>
+        <td><%= link_to "Destroy", book_path(book), method: "DELETE" %></td>
+      </tr>
+    <% end %>
+
+  </table>
+
+  <br>
+  <h3 style="text-align: center;"><%= will_paginate @books %></h3>
+</div>

@@ -5,6 +5,10 @@ class BooksController < ApplicationController
     @books = Book.page(params[:page]).per_page(24)
   end
 
+  def admin_index
+    @books = Book.page(params[:page]).per_page(50)
+  end
+
   def show
   end
 
@@ -17,7 +21,6 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    fail
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }

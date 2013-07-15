@@ -25,5 +25,6 @@
   <%= @book.inventories.count %>
 </p>
 
+<%= link_to "Add Inventory", new_inventory_path(@book.id) %> |
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

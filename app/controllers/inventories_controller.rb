@@ -17,10 +17,10 @@ class InventoriesController < ApplicationController
 
   def create
     @inventory = Inventory.new(inventory_params)
-
+    @book = Book.find(@inventory.book_id)
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to @inventory, notice: 'Inventory was successfully created.' }
+        format.html { redirect_to @book, notice: 'Inventory was successfully created.' }
         format.json { render action: 'show', status: :created, location: @inventory }
       else
         format.html { render action: 'new' }

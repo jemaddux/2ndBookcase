@@ -26,7 +26,8 @@
       <% if current_admin %>
         <li class="has-dropdown"><%= link_to "Admin", admins_path %>
           <ul class="dropdown">
-            <li><%= link_to "Create Book", new_book_path %></li>
+            <li><%= link_to "Create a new Book", new_book_path %></li>
+            <li><%= link_to "All Books", admin_books_path %></li>
           </ul>
         </li>
         <li class="divider"></li>
