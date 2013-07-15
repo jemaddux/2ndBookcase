@@ -4,6 +4,9 @@ class Subscription < ActiveRecord::Base
 
   validates_presence_of :customer_id, :plan_id, :stripe_card_token
 
+  attr_accessible :plan_id, :customer_id, :stripe_card_token,
+                  :stripe_customer_token
+
   def save_with_payment
     if valid?
       customer = Stripe::Customer.create(description: customer_id,

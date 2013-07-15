@@ -3,6 +3,10 @@ class ReadingList < ActiveRecord::Base
   has_one :book
   has_one :inventory
 
+  attr_accessible :customer_id, :inventory_id, :book_id, :loan_out_condition,
+                  :returned_condition, :loan_out_date, :returned_date,
+                  :out_on_loan, :in_list
+
   def self.create_list_item(params)
     rl_item = ReadingList.new
     rl_item.customer_id = params["customer_id"]

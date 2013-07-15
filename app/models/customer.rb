@@ -4,7 +4,9 @@ class Customer < ActiveRecord::Base
   has_one :plan
   has_many :subscriptions
 
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :plan_id,
+                  :first_name, :last_name, :email, :street_address, :city,
+                  :state, :zipcode, :account_status
 
   validates_uniqueness_of :email
   validates_presence_of :first_name, :last_name, :street_address, :city,

@@ -16,16 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :times_rated %><br>
-    <%= f.number_field :times_rated %>
+    <%= f.text_area :description, class: "book_description" %>
   </div>
   <div class="actions">
     <%= f.submit %>
