@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def available_inventory(book_id)
-    @inventory = Inventory.where(book_id: book_id, checked_out: false)
+    @inventory = Inventory.where(book_id: book_id, checked_out: false, in_circulation: true)
   end
 end

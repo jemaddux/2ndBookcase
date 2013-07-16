@@ -89,6 +89,11 @@ namespace :db do
       inventory = Inventory.new
       inventory.condition = conditions[rand(0..4)]
       inventory.checked_out = false
+      if inventory.condition == "retired"
+        inventory.in_circulation = false
+      else
+        inventory.in_circulation = true
+      end
       inventory.save!
 
       book = Book.offset(rand(Book.count)).first

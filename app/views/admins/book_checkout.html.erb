@@ -19,7 +19,7 @@
         <td><%= reading_list.customer_id %></td>
         <td><%= first_available_inventory(reading_list.book_id).condition %></td>
         <td id="<%= reading_list.id %>">
-          <%= form_tag(checkout_book_path, method: "POST", remote: true) do %>
+          <%= form_tag(checkout_book_path, method: "POST") do %>
           <%= hidden_field_tag(:reading_list_id, reading_list.id) %>
           <%= hidden_field_tag(:book_id, reading_list.book_id) %>
           <%= submit_tag("Mark as sent to customer", class: "small button checkout_button", id: reading_list.id) %>
@@ -34,11 +34,6 @@
 
 <h3 style="text-align: center;"><%= will_paginate @reading_list %></h3>
 
-<script type="text/javascript">
-  $(".checkout_button").on("click", function(event){
-    alert("herro");
-  });
-</script>
 
 
 

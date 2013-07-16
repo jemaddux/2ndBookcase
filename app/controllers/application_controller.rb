@@ -24,7 +24,7 @@ private
   end
 
   def first_available_inventory(book_id)
-    @inventory = Inventory.where(book_id: book_id, checked_out: false).first
+    @inventory = Inventory.where(book_id: book_id, checked_out: false, in_circulation: true).first
   end
 
   helper_method :first_available_inventory
