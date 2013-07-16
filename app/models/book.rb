@@ -4,4 +4,5 @@ class Book < ActiveRecord::Base
   belongs_to :reading_list
 
   attr_accessible :name, :description, :rating, :times_rated, :author
+  validates_presence_of :name, :description, :author
 end
