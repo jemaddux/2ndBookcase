@@ -17,6 +17,7 @@ class CustomersController < ApplicationController
   end
 
   def reading_list
+    @books_out = current_customer.reading_list_books_out_on_loan
     @books = current_customer.reading_list_books
   end
 

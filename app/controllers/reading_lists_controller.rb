@@ -1,7 +1,10 @@
 class ReadingListsController < ApplicationController
   def create
-    @reading_list_item = ReadingList.create_list_item(params)
-    @reading_list_item.save
+    book_ids = current_customer.reading_lists..where(in_list: true)map {|rl| rl.book_id}
+    unless book_ids.include? params["book_id"]
+      @reading_list_item = ReadingList.create_list_item(params)
+      @reading_list_item.save
+    end
 
     return false
   end

@@ -9,6 +9,11 @@ class AdminsController < ApplicationController
   def show
   end
 
+  def book_checkout
+    @books_checked_out = ReadingList.where(out_on_loan: true).count
+    @reading_list = ReadingList.where(loan_out_date: nil).page(params[:page]).per_page(50)
+  end
+
   def new
     @admin = Admin.new
   end

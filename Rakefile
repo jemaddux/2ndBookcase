@@ -165,12 +165,12 @@ namespace :db do
           reading_list = ReadingList.new
           reading_list.customer_id = number + 1
           reading_list.book_id = book.id
-          reading_list.inventory_id = book.inventories.first.id
-          reading_list.loan_out_condition = book.inventories.first.condition
-          reading_list.returned_condition = book.inventories.first.condition
-          reading_list.loan_out_date = DateTime.now
+          reading_list.inventory_id = nil
+          reading_list.loan_out_condition = nil
+          reading_list.returned_condition = nil
+          reading_list.loan_out_date = nil
           reading_list.returned_date = nil
-          reading_list.out_on_loan = true
+          reading_list.out_on_loan = false
           reading_list.save!
         end
       end

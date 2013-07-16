@@ -1,5 +1,5 @@
 <li class="book_li">
-  <%= image_tag("#{rand(0..100)}.jpg", class: "book_cover") %>
+  <%= image_tag("#{book.id % 100}.jpg", class: "book_cover") %>
 
   <h5 class="book_title"><%= book.name %></h5>
   <h5 class="author_name">By: <%= book.author %></h5>
@@ -9,7 +9,11 @@
     <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
       <%= hidden_field_tag(:book_id, book.id)  %>
       <%= hidden_field_tag(:customer_id, current_customer.id ) %>
-      <%= submit_tag("Add to Reading List", class: "small success button") %>
+      <% if current_customer.reading_lists.map {|rl| rl.book_id}.include? book.id %>
+        <input class="small button" type="submit" value="In your reading list" name="commit"></input>
+      <% else %>
+        <%= submit_tag("Add to Reading List", class: "small success button") %>
+      <% end %>
     <% end %>
   <% end %>
 </li>

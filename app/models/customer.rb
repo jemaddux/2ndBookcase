@@ -29,9 +29,34 @@ class Customer < ActiveRecord::Base
   end
 
   def reading_list_books
+    remove_duplicates_in_list
     reading_list_items = Customer.find(id).reading_lists.where(in_list: true, out_on_loan: false)
     book_ids = reading_list_items.map {|item| item.book_id}
     Book.where(id: book_ids)
+  end
+
+  def reading_list_books_out_on_loan
+    remove_duplicates_in_list
+    reading_list_items = Customer.find(id).reading_lists.where(in_list: true, out_on_loan: true)
+    book_ids = reading_list_items.map {|item| item.book_id}
+    Book.where(id: book_ids)
+  end
+
+private
+
+  def remove_duplicates_in_list
+    reading_list_items = Customer.find(id).reading_lists.where(in_list: true)
+    items = []
+    reading_list_items.shuffle.each do |rl_item|
+      if items.include? rl_item.book_id
+        if rl_item.out_on_loan == false
+          item = ReadingList.find(rl_item.id)
+          item.delete
+        end
+      else
+        items << rl_item.book_id
+      end
+    end
   end
 end
 

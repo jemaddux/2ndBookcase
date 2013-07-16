@@ -1,11 +1,40 @@
 <div class="row">
+  <h3>Books Out on Loan (<%= @books_out.count %> of <%= current_customer.plan_id %>)</h3>
+</div>
+
+  <% if @books_out.count == 0 %>
+    <div class="row">
+      <br>
+      <h4 style="text-align: center;">No books currently out on loan.</h4>
+      <br>
+    </div>
+  <% end %>
+
+<% @books_out.each do |book| %>
+
+  <div class="row">
+    <div class="large-3 columns small-3">
+      <%= image_tag("#{book.id % 100}.jpg", class: "book_cover") %>
+    </div>
+    <div class="large-9 columns">
+      <strong><%= book.name %></strong> by: <%= book.author %><br>
+      <p>
+        <%= book.description[0..600] %>
+      </p>
+    </div>
+    <hr />
+  </div>
+<% end %>
+
+
+<div class="row">
   <h3>Your Reading List (<%= @books.count %>)</h3>
 </div>
 
 <% @books.each do |book| %>
   <div class="row">
     <div class="large-3 columns small-3">
-      <%= image_tag("#{rand(0..100)}.jpg", class: "book_cover") %>
+      <%= image_tag("#{book.id % 100}.jpg", class: "book_cover") %>
     </div>
     <div class="large-9 columns">
       <strong><%= book.name %></strong> by: <%= book.author %><br>

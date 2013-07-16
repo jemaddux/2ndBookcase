@@ -1,0 +1,28 @@
+<%= @books_checked_out %> books checked out.
+
+
+<div class="percent_50_center">
+<h3>Books Waiting to be checked out</h3>
+  <table>
+    <th>Book Title</th>
+    <th>Book Inventory ID</th>
+    <th>Customer ID</th>
+    <th>Loan Out Condition</th>
+    <th>Action</th>
+
+    <% for reading_list in @reading_list %>
+
+      <tr>
+        <td><%= reading_list.book_id %></td>
+        <td><%= reading_list.book_id %></td>
+        <td><%= reading_list.customer_id %></td>
+        <td><%= reading_list.loan_out_condition %></td>
+        <td><%= link_to "Mark Sent to Customer", "#" %></td>
+      </tr>
+
+    <% end %>
+
+  </table>
+</div>
+
+<h3 style="text-align: center;"><%= will_paginate @reading_list %></h3>
