@@ -1,11 +1,12 @@
-<%= @books_checked_out %> books checked out.
-
-
 <div class="percent_50_center">
-<h3>Books Waiting to be checked out</h3>
+<h3 style="text-align: center;">
+  <%= @books_checked_out %> books currently checked out.
+</h3>
+
+<h3>Books waiting to be checked out</h3>
   <table>
-    <th>Book Title</th>
-    <th>Book Inventory ID</th>
+    <th>Book ID</th>
+    <th>Available Inventory ID</th>
     <th>Customer ID</th>
     <th>Loan Out Condition</th>
     <th>Action</th>
@@ -14,10 +15,16 @@
 
       <tr>
         <td><%= reading_list.book_id %></td>
-        <td><%= reading_list.book_id %></td>
+        <td><%= first_available_inventory(reading_list.book_id).id %></td>
         <td><%= reading_list.customer_id %></td>
-        <td><%= reading_list.loan_out_condition %></td>
-        <td><%= link_to "Mark Sent to Customer", "#" %></td>
+        <td><%= first_available_inventory(reading_list.book_id).condition %></td>
+        <td>
+          <%= form_tag(checkout_book_path, method: "POST", remote: true) do %>
+          <%= hidden_field_tag(:reading_list_id, reading_list.id) %>
+          <%= hidden_field_tag(:book_id, reading_list.book_id) %>
+          <%= submit_tag("Mark as sent to customer", class: "small button") %>
+          <% end %>
+        </td>
       </tr>
 
     <% end %>

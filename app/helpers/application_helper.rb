@@ -7,4 +7,7 @@ module ApplicationHelper
     @plan ||= Plan.find(id)
   end
 
+  def available_inventory(book_id)
+    @inventory = Inventory.where(book_id: book_id, checked_out: false)
+  end
 end

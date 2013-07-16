@@ -23,6 +23,11 @@ private
     redirect_to root_url if current_user.nil?
   end
 
+  def first_available_inventory(book_id)
+    @inventory = Inventory.where(book_id: book_id, checked_out: false).first
+  end
+
+  helper_method :first_available_inventory
   helper_method :current_customer
   helper_method :current_user
   helper_method :current_admin

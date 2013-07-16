@@ -9,9 +9,23 @@ class AdminsController < ApplicationController
   def show
   end
 
+  def checkout_book
+    inventory = first_available_inventory(params["book_id"])
+    inventory.checked_out = true
+    inventory.save
+
+    reading_list = ReadingList.find(params["reading_list_id"])
+    reading_list.loan_out_date = Date.today
+    reading_list.loan_out_condition = inventory.condition
+    reading_list.out_on_loan = true
+    reading_list.save
+
+    redirect_to :back
+  end
+
   def book_checkout
     @books_checked_out = ReadingList.where(out_on_loan: true).count
-    @reading_list = ReadingList.where(loan_out_date: nil).page(params[:page]).per_page(50)
+    @reading_list = ReadingList.where(loan_out_date: nil).page(params[:page]).per_page(20)
   end
 
   def new
