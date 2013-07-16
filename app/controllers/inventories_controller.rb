@@ -18,35 +18,24 @@ class InventoriesController < ApplicationController
   def create
     @inventory = Inventory.new(inventory_params)
     @book = Book.find(@inventory.book_id)
-    respond_to do |format|
-      if @inventory.save
-        format.html { redirect_to @book, notice: 'Inventory was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @inventory }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
-      end
+    if @inventory.save
+      redirect_to @book, notice: 'Inventory was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @inventory.update(inventory_params)
-        format.html { redirect_to @inventory, notice: 'Inventory was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
-      end
+    if @inventory.update(inventory_params)
+      redirect_to @inventory, notice: 'Inventory was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @inventory.destroy
-    respond_to do |format|
-      format.html { redirect_to inventories_url }
-      format.json { head :no_content }
-    end
+    redirect_to inventories_url
   end
 
   private
