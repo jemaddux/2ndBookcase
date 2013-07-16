@@ -5,24 +5,47 @@
 
 <h3>Books waiting to be checked out</h3>
   <table>
-    <th>Book ID</th>
-    <th>Available Inventory ID</th>
-    <th>Customer ID</th>
+    <th>Book Name</th>
+    <th>Inventory ID</th>
+    <th>Customer</th>
+    <th>Address</th>
     <th>Loan Out Condition</th>
     <th>Action</th>
 
     <% for reading_list in @reading_list %>
+      <% if first_available_inventory(reading_list.book_id) %>
+        <% inventory = first_available_inventory(reading_list.book_id) %>
+        <% inventory_id = inventory.id %>
+        <% inventory_condition = inventory.condition %>
+      <% else %>
+        <% inventory_id = "None Available" %>
+        <% inventory_condition = "NA" %>
+      <% end %>
 
       <tr>
-        <td><%= reading_list.book_id %></td>
-        <td><%= first_available_inventory(reading_list.book_id).id %></td>
-        <td><%= reading_list.customer_id %></td>
-        <td><%= first_available_inventory(reading_list.book_id).condition %></td>
+        <td><%= find_book(reading_list.book_id).name %></td>
+        <td><%= inventory_id %></td>
+        <td>
+          <% customer = find_customer(reading_list.customer_id) %>
+          <%= customer.first_name %>
+          <%= customer.last_name %>
+        </td>
+        <td>
+          <%= customer.street_address %><br>
+          <%= customer.city %>
+          <%= customer.state %>
+          <%= customer.zipcode %>
+        </td>
+        <td><%= inventory_condition.capitalize %></td>
         <td id="<%= reading_list.id %>">
-          <%= form_tag(checkout_book_path, method: "POST") do %>
-          <%= hidden_field_tag(:reading_list_id, reading_list.id) %>
-          <%= hidden_field_tag(:book_id, reading_list.book_id) %>
-          <%= submit_tag("Mark as sent to customer", class: "small button checkout_button", id: reading_list.id) %>
+          <% if inventory_id == "None Available" %>
+            Can't ship to customer.
+          <% else %>
+            <%= form_tag(checkout_book_path, method: "POST") do %>
+            <%= hidden_field_tag(:reading_list_id, reading_list.id) %>
+            <%= hidden_field_tag(:book_id, reading_list.book_id) %>
+            <%= submit_tag("Mark as sent to customer", class: "small success button checkout_button", id: reading_list.id) %>
+            <% end %>
           <% end %>
         </td>
       </tr>

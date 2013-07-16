@@ -1,10 +1,14 @@
 module ApplicationHelper
   def find_book(id)
-    @book ||= Book.find(id)
+    @book = Book.find(id)
   end
 
   def find_plan(id)
     @plan ||= Plan.find(id)
+  end
+
+  def find_customer(id)
+    @customer = Customer.find(id)
   end
 
   def available_inventory(book_id)
