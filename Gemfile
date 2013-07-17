@@ -14,6 +14,7 @@ gem 'will_paginate', '> 3.0'
 gem 'bcrypt-ruby', '> 3.0'
 gem 'protected_attributes'
 gem 'stripe'
+gem 'faker'
 
 group :production do
   gem 'pg'
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
-  gem 'faker'
 end
 
 group :test do
