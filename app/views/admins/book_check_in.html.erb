@@ -1,7 +1,21 @@
-<div class="percent_50_center">
+<div class="percent_60_center">
 <h3 style="text-align: center;">
   <%= @books_checked_out.count %> books currently checked out.
 </h3>
+
+<%= form_tag(check_in_book_path, method: "POST") do %>
+  <h4>Book Condition: </h4>
+  <%= radio_button_tag :returned_condition, "new" %> New
+  <%= radio_button_tag :returned_condition, "good" %> Good
+  <%= radio_button_tag :returned_condition, "decent" %> Decent
+  <%= radio_button_tag :returned_condition, "well loved" %> Well loved
+  <%= radio_button_tag :returned_condition, "retired" %> Retired
+  <h4>Inventory ID</h4>
+  <span class="percent_20"><%= text_field_tag(:inventory_id) %></span>
+  <%= submit_tag("Check In Book", class: "small success button
+                                        checkout_button") %>
+<% end %>
+
 
 <h3>Checked out books</h3>
   <table>
@@ -44,7 +58,7 @@
         <td id="<%= reading_list.id %>">
           <%= hidden_field_tag(:reading_list_id, reading_list.id) %>
           <%= hidden_field_tag(:inventory_id, reading_list.inventory_id) %>
-          <%= submit_tag("Book Returned", class: "small success button checkout_button", id: reading_list.id) %>
+          <%= submit_tag("Check In Book", class: "small success button checkout_button", id: reading_list.id) %>
           <% end %>
         </td>
       </tr>

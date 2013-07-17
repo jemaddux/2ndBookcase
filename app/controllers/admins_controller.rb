@@ -31,11 +31,17 @@ class AdminsController < ApplicationController
     i.in_circulation = false if params[:returned_condition] == "retired"
     i.save
 
-    rl = ReadingList.find(params[:reading_list_id])
+    rl_dataset = ReadingList.where(out_on_loan: true)
+    rl = rl_dataset.find_by_inventory_id(params[:inventory_id])
+
     rl.returned_date = Date.today
     rl.out_on_loan = false
     rl.in_list = false
-    rl.returned_condition = params[:returned_condition]
+    if params[:returned_condition]
+      rl.returned_condition = params[:returned_condition]
+    else
+      rl.returned_condition = rl.loan_out_condition
+    end
     rl.save
 
     redirect_to :back
