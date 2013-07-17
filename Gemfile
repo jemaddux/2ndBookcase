@@ -15,6 +15,10 @@ gem 'bcrypt-ruby', '> 3.0'
 gem 'protected_attributes'
 gem 'stripe'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'rack-mini-profiler'
   gem 'bullet'
