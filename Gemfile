@@ -16,10 +16,6 @@ gem 'protected_attributes'
 gem 'stripe'
 gem 'faker'
 
-group :production do
-  gem 'pg'
-end
-
 group :development, :test do
   gem 'rack-mini-profiler'
   gem 'bullet'
