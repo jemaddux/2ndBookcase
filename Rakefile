@@ -1,6 +1,3 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 require File.expand_path('../config/application', __FILE__)
 
 SecondBookcase::Application.load_tasks
@@ -37,8 +34,40 @@ namespace :db do
 
   desc "Populate database"
   task :populate_database => [:populate_categories, :populate_books,
-          :populate_inventory, :populate_plans, :populate_customers,
-          :populate_reading_lists]
+          :populate_inventory, :populate_plans, :add_john,
+          :populate_customers, :populate_reading_lists]
+
+  desc "Add John's info"
+  task :add_john => :environment do
+    unless Customer.find_by_email("jemaddux@gmail.com")
+      customer = Customer.new
+      customer.password = "password"
+      customer.password_confirmation = "password"
+      customer.email = "jemaddux@gmail.com"
+      customer.first_name = "John"
+      customer.last_name = "Maddux"
+      customer.street_address = "630 Pinetree Dr"
+      customer.city = "Decatur"
+      customer.state = "GA"
+      customer.zipcode = "30030"
+      customer.account_status = "payment current"
+      customer.plan_id = 4
+      customer.save!
+
+      subscription = Subscription.new
+      subscription.customer_id = customer.id
+      subscription.plan_id = customer.plan_id
+      subscription.stripe_card_token = "xyz"
+      subscription.stripe_customer_token = customer.id
+      subscription.save!
+
+      admin = Admin.new
+      admin.email = "jemaddux@gmail.com"
+      admin.password = "password"
+      admin.password_confirmation = "password"
+      admin.save!
+    end
+  end
 
   desc "Adds all the categories to the database"
   task :populate_categories => :environment do
@@ -106,22 +135,24 @@ namespace :db do
 
   desc "Add Plans"
   task :populate_plans => :environment do
-    plan1 = Plan.new
-    plan1.cost = 11.00
-    plan1.description = "One book out at a time."
-    plan1.save
-    plan2 = Plan.new
-    plan2.cost = 18.00
-    plan2.description = "Two books out at a time."
-    plan2.save
-    plan3 = Plan.new
-    plan3.cost = 25.00
-    plan3.description = "Three books out at a time."
-    plan3.save
-    plan4 = Plan.new
-    plan4.cost = 33.00
-    plan4.description = "Four books out at a time."
-    plan4.save
+    if Plan.all.count == 0
+      plan1 = Plan.new
+      plan1.cost = 11.00
+      plan1.description = "One book out at a time."
+      plan1.save
+      plan2 = Plan.new
+      plan2.cost = 18.00
+      plan2.description = "Two books out at a time."
+      plan2.save
+      plan3 = Plan.new
+      plan3.cost = 25.00
+      plan3.description = "Three books out at a time."
+      plan3.save
+      plan4 = Plan.new
+      plan4.cost = 33.00
+      plan4.description = "Four books out at a time."
+      plan4.save
+    end
   end
 
   desc "Add Customers"
@@ -164,7 +195,7 @@ namespace :db do
     puts ""
     customers_count = Customer.count
     customers_count.times do |number|
-      3.times do |num|
+      10.times do |num|
         book = Book.offset(rand(Book.count)).first
         if book.inventories.count > 0
           reading_list = ReadingList.new
@@ -176,6 +207,7 @@ namespace :db do
           reading_list.loan_out_date = nil
           reading_list.returned_date = nil
           reading_list.out_on_loan = false
+          reading_list.in_list = true
           reading_list.save!
         end
       end
