@@ -195,7 +195,7 @@ namespace :db do
     puts ""
     customers_count = Customer.count
     customers_count.times do |number|
-      10.times do |num|
+      4.times do |num|
         book = Book.offset(rand(Book.count)).first
         if book.inventories.count > 0
           reading_list = ReadingList.new
