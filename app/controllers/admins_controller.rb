@@ -17,8 +17,26 @@ class AdminsController < ApplicationController
     reading_list = ReadingList.find(params["reading_list_id"])
     reading_list.loan_out_date = Date.today
     reading_list.loan_out_condition = inventory.condition
+    reading_list.inventory_id = inventory.id
     reading_list.out_on_loan = true
     reading_list.save
+
+    redirect_to :back
+  end
+
+  def check_in_book
+    i = Inventory.find(params[:inventory_id])
+    i.checked_out = false
+    i.condition = params[:returned_condition]
+    i.in_circulation = false if params[:returned_condition] == "retired"
+    i.save
+
+    rl = ReadingList.find(params[:reading_list_id])
+    rl.returned_date = Date.today
+    rl.out_on_loan = false
+    rl.in_list = false
+    rl.returned_condition = params[:returned_condition]
+    rl.save
 
     redirect_to :back
   end
@@ -26,6 +44,10 @@ class AdminsController < ApplicationController
   def book_checkout
     @books_checked_out = ReadingList.where(out_on_loan: true).count
     @reading_list = ReadingList.where(loan_out_date: nil).page(params[:page]).per_page(20)
+  end
+
+  def book_check_in
+    @books_checked_out = ReadingList.where(out_on_loan: true).page(params[:page]).per_page(20)
   end
 
   def new

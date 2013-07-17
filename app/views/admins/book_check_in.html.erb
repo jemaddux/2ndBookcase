@@ -1,0 +1,58 @@
+<div class="percent_50_center">
+<h3 style="text-align: center;">
+  <%= @books_checked_out.count %> books currently checked out.
+</h3>
+
+<h3>Checked out books</h3>
+  <table>
+    <th>Book Name</th>
+    <th>Inventory ID</th>
+    <th>Customer</th>
+    <th>Address</th>
+    <th>Loan Out Condition</th>
+    <th>Returned Condition</th>
+    <th>Action</th>
+
+    <% for reading_list in @books_checked_out %>
+      <tr>
+        <td><%= find_book(reading_list.book_id).name %></td>
+        <td><%= reading_list.inventory_id %></td>
+        <td>
+          <% customer = find_customer(reading_list.customer_id) %>
+          <%= customer.first_name %>
+          <%= customer.last_name %>
+        </td>
+        <td>
+          <%= customer.street_address %><br>
+          <%= customer.city %>
+          <%= customer.state %>
+          <%= customer.zipcode %>
+        </td>
+        <td><%= reading_list.loan_out_condition.capitalize %></td>
+        <td>
+          <%= form_tag(check_in_book_path, method: "POST") do %>
+          <%= radio_button_tag :returned_condition, "new",
+              reading_list.loan_out_condition == "new" %> New<br>
+          <%= radio_button_tag :returned_condition, "good",
+              reading_list.loan_out_condition == "good" %> Good<br>
+          <%= radio_button_tag :returned_condition, "decent",
+              reading_list.loan_out_condition == "decent" %> Decent<br>
+          <%= radio_button_tag :returned_condition, "well loved",
+              reading_list.loan_out_condition == "well loved" %> Well loved<br>
+          <%= radio_button_tag :returned_condition, "retired" %> Retired<br>
+        </td>
+        <td id="<%= reading_list.id %>">
+          <%= hidden_field_tag(:reading_list_id, reading_list.id) %>
+          <%= hidden_field_tag(:inventory_id, reading_list.inventory_id) %>
+          <%= submit_tag("Book Returned", class: "small success button checkout_button", id: reading_list.id) %>
+          <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </table>
+</div>
+
+<h3 style="text-align: center;"><%= will_paginate @books_checked_out %></h3>
+

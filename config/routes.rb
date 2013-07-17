@@ -13,7 +13,9 @@ SecondBookcase::Application.routes.draw do
   get 'reading_list', to: 'customers#reading_list', as: 'reading_list'
   post 'reading_list/:book_id', to: 'reading_lists#update', as: 'update_reading_list'
   post 'checkout_book', to: "admins#checkout_book", as: 'checkout_book'
+  post 'check_in_book', to: "admins#check_in_book", as: 'check_in_book'
   get "book_checkout", to: "admins#book_checkout", as: "book_checkout"
+  get "book_check_in", to: "admins#book_check_in", as: "book_check_in"
 
   resources :reading_lists
   resources :inventories
