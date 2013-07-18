@@ -1,5 +1,5 @@
 <div class="row">
-  <h3>Books Out on Loan (<%= @books_out.count %> of <%= current_customer.plan_id %>)</h3>
+  <h3>Books Currently Out (<%= @books_out.count %> of <%= current_customer.plan_id %>)</h3>
 </div>
 
   <% if @books_out.count == 0 %>

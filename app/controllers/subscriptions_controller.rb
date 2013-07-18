@@ -22,7 +22,7 @@ class SubscriptionsController < ApplicationController
     @subscription.stripe_card_token = params["subscription"]["stripe_card_token"]
 
     if @subscription.save_with_payment
-      redirect_to current_customer
+      redirect_to root_url
     else
       render action: 'new'
     end
