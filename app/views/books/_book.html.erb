@@ -3,13 +3,13 @@
 
   <h5 class="book_title"><%= book.name %></h5>
   <h5 class="author_name">By: <%= book.author %></h5>
-  <p><%= book.description[0..80] %></p>
+  <p><%= book.description[0..80]+"..." %></p>
 
   <% if current_customer %>
     <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
       <%= hidden_field_tag(:book_id, book.id)  %>
       <%= hidden_field_tag(:customer_id, current_customer.id ) %>
-      <% if current_customer.reading_lists.map {|rl| rl.book_id}.include? book.id %>
+      <% if current_customer.reading_lists.where(in_list: true).map {|rl| rl.book_id}.include? book.id %>
         <input class="small button" type="submit" value="In your reading list" name="commit"></input>
       <% else %>
         <%= submit_tag("Add to Reading List", class: "small success button") %>
