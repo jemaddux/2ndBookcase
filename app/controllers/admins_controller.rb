@@ -10,16 +10,17 @@ class AdminsController < ApplicationController
   end
 
   def checkout_book
-    inventory = first_available_inventory(params["book_id"])
-    inventory.checked_out = true
-    inventory.save
+    # inventory = first_available_inventory(params["book_id"])
+    # inventory.checked_out = true
+    # inventory.save
 
-    reading_list = ReadingList.find(params["reading_list_id"])
-    reading_list.loan_out_date = Date.today
-    reading_list.loan_out_condition = inventory.condition
-    reading_list.inventory_id = inventory.id
-    reading_list.out_on_loan = true
-    reading_list.save
+    # reading_list = ReadingList.find(params["reading_list_id"])
+    # reading_list.loan_out_date = Date.today
+    # reading_list.loan_out_condition = inventory.condition
+    # reading_list.inventory_id = inventory.id
+    # reading_list.out_on_loan = true
+    # reading_list.save
+    Book.checkout_book(params)
 
     redirect_to :back
   end
