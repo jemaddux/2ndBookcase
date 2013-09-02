@@ -15,6 +15,7 @@ gem 'bcrypt-ruby', '> 3.0'
 gem 'protected_attributes'
 gem 'stripe'
 gem 'faker'
+gem 'google-analytics-rails'
 
 group :development, :test do
   # gem 'rack-mini-profiler'

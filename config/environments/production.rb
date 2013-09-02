@@ -77,4 +77,7 @@ SecondBookcase::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #Goggle analytics tracker
+  GA.tracker = "UA-43682117-1"
 end
