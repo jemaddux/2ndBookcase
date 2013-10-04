@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.page(params[:page]).per_page(24)
+    @books = Book.page(params[:page]).per_page(20)
   end
 
   def admin_index

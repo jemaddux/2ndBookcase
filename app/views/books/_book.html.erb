@@ -1,5 +1,9 @@
 <li class="book_li">
-  <%= image_tag("#{book.id % 100}.jpg", class: "book_cover") %>
+  <% unless book.picture_url.blank? %>
+    <%= image_tag("books/covers/#{book.picture_url}.jpg", class: "book_cover") %>
+  <% else %>
+    <%= image_tag("#{book.id % 10}.jpg", class: "book_cover") %>
+  <% end %>
 
   <h5 class="book_title"><%= book.name %></h5>
   <h5 class="author_name">By: <%= book.author %></h5>

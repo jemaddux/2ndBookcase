@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130717194828) do
+ActiveRecord::Schema.define(version: 20131004004649) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20130717194828) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "author"
+    t.text     "picture_url"
   end
 
   create_table "books_categories", id: false, force: true do |t|
