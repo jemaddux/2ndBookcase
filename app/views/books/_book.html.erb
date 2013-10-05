@@ -7,7 +7,7 @@
 
   <h5 class="book_title"><%= book.name %></h5>
   <h5 class="author_name">By: <%= book.author %></h5>
-  <p><%= book.description[0..80]+"..." %></p>
+  <p><%= book.description %></p>
 
   <% if current_customer %>
     <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
@@ -19,5 +19,7 @@
         <%= submit_tag("Add to Reading List", class: "small success button") %>
       <% end %>
     <% end %>
+  <% else %>
+    <%= link_to "Sign Up to Rent", signup_path, class: "button success" %>
   <% end %>
 </li>
