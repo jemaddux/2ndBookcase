@@ -113,33 +113,28 @@ namespace :db do
               { name: "Storm of Swords",
                 author: "George R.R. Martin",
                 category_name: "Science Fiction & Fantasy",
-                description: "derp",
+                description: "Civil war is destroying the realm. New alliances are formed as the remaing kings vie for the iron throne. Meanwhile the threat North of the wall grows ever closer.",
                 picture_url: "storm_of_swords"},
               { name: "Feast for Crows",
                 author: "George R.R. Martin",
                 category_name: "Science Fiction & Fantasy",
-                description: "derp",
+                description: "The war of the five kings is coming to an end but the realm still suffers. The power in kings landing is in disarray while across the realm new threats arise.",
                 picture_url: "feast_for_crows"},
               { name: "Clash of Kings",
                 author: "George R.R. Martin",
                 category_name: "Science Fiction & Fantasy",
-                description: "derp",
+                description: "War has come to Westeros. The Night's Watch ventures north of the wall. In Essos, a challeger continues her quest to conquer the iron throne.",
                 picture_url: "clash_of_kings"},
               { name: "Dance with Dragons",
                 author: "George R.R. Martin",
                 category_name: "Science Fiction & Fantasy",
-                description: "derp",
+                description: "On the Wall the young command stuggles to rebuild the Night's Watch. In the south the queen is on trial and in the east dragons are rising.",
                 picture_url: "dance_with_dragons"},
               { name: "Tuf Voyaging",
                 author: "George R.R. Martin",
                 category_name: "Science Fiction & Fantasy",
-                description: "derp",
+                description: "Haviland Tuf travels the galaxy in the Ark, a warship with ecological engineering capabilities.",
                 picture_url: "tuf_voyaging"},
-              { name: "Dreamsongs: Volume 1",
-                author: "George R.R. Martin",
-                category_name: "Science Fiction & Fantasy",
-                description: "derp",
-                picture_url: "dreamsongs_vol_1"},
               { name: "Fevre Dream",
                 author: "George R.R. Martin",
                 category_name: "Science Fiction & Fantasy",
@@ -160,11 +155,6 @@ namespace :db do
                 category_name: "Science Fiction & Fantasy",
                 description: "derp",
                 picture_url: "hunters_run"},
-              { name: "Dreamsongs: Volume 2",
-                author: "George R.R. Martin",
-                category_name: "Science Fiction & Fantasy",
-                description: "derp",
-                picture_url: "dreamsongs_vol_2"},
               { name: "Catching Fire",
                 author: "Suzanne Collins",
                 category_name: "Science Fiction & Fantasy",
@@ -334,7 +324,14 @@ namespace :db do
 
     # Create books's
     books.each do |book|
-      unless Book.find_by_name(book[:name])
+      if Book.find_by_name(book[:name])
+        #update everything except for book name
+        livre = Book.find_by_name(book[:name])
+        livre.author = book[:author]
+        livre.description = book[:description]
+        livre.picture_url = book[:picture_url]
+        livre.save!
+      else
         livre = Book.new()
         livre.name = book[:name]
         livre.author = book[:author]
@@ -346,6 +343,8 @@ namespace :db do
         livre.save!
       end
     end
+    puts ""
+    puts "#{book_count} books updated."
     puts ""
     puts "Added #{Book.count - book_count} books."
   end
