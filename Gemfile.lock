@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
@@ -68,6 +68,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.7)
+    pg (0.17.0)
     polyglot (0.3.3)
     protected_attributes (1.0.1)
       activemodel (>= 4.0.0.beta, < 5.0)
@@ -164,6 +165,7 @@ DEPENDENCIES
   google-analytics-rails
   jbuilder (~> 1.2)
   jquery-rails
+  pg
   protected_attributes
   rails (= 4.0.0)
   rspec-rails

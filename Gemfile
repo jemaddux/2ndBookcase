@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -17,16 +17,16 @@ gem 'stripe'
 gem 'faker'
 gem 'google-analytics-rails'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   # gem 'rack-mini-profiler'
   gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :test do
@@ -36,6 +36,3 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
-
-
-
