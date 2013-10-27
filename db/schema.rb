@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20131004004649) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "account_status"
+    t.string   "rental_plan"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
