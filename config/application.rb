@@ -9,6 +9,8 @@ Bundler.require(:default, Rails.env)
 module SecondBookcase
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/app/models/bookshelf)
+    config.autoload_paths += %W(#{config.root}/app/controllers/bookshelf)
+    config.autoload_paths += %W(#{config.root}/app/views/bookshelf)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
