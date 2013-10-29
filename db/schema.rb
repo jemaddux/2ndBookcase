@@ -94,13 +94,6 @@ ActiveRecord::Schema.define(version: 20131029035203) do
     t.integer  "plan_id"
   end
 
-  create_table "customers_books", force: true do |t|
-    t.integer  "customer_id"
-    t.integer  "book_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "customers_books_owneds", force: true do |t|
     t.integer  "customer_id"
     t.integer  "book_id"
