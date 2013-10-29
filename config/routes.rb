@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :chapters
+
   resources :customers_books_reads
 
   resources :customers_books_owneds
