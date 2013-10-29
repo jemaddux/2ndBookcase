@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :customers_books_owneds
+
   resources :article_comments
   resources :article_ratings
   resources :articles

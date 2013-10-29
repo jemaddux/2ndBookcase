@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @customers_books_owned.customer_id %>
+</p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @customers_books_owned.book_id %>
+</p>
+
+<%= link_to 'Edit', edit_customers_books_owned_path(@customers_books_owned) %> |
+<%= link_to 'Back', customers_books_owneds_path %>

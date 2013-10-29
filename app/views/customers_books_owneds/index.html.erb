@@ -1,0 +1,29 @@
+<h1>Listing customers_books_owneds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Book</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers_books_owneds.each do |customers_books_owned| %>
+      <tr>
+        <td><%= customers_books_owned.customer_id %></td>
+        <td><%= customers_books_owned.book_id %></td>
+        <td><%= link_to 'Show', customers_books_owned %></td>
+        <td><%= link_to 'Edit', edit_customers_books_owned_path(customers_books_owned) %></td>
+        <td><%= link_to 'Destroy', customers_books_owned, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customers books owned', new_customers_books_owned_path %>
