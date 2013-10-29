@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :article_ratings
+
   resources :articles
 
   resources :admins
