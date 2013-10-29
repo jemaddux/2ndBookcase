@@ -1,4 +1,6 @@
 SecondBookcase::Application.routes.draw do
+  resources :articles
+
   resources :admins
 
   resources :subscriptions
