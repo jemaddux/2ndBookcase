@@ -3,8 +3,7 @@ class CustomersBooksOwnedsController < ApplicationController
 
   def index
     @books_owned = CustomersBooksOwned.where(customer_id: current_customer.id).page(params[:page]).per_page(20)
-    ids = @books_owned.pluck(:book_id)
-    @books = Book.where(id: ids)
+    @books = Book.where(id: @books_owned.pluck(:book_id)) if @books_owned
   end
 
   def show

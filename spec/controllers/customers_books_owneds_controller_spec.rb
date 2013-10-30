@@ -31,7 +31,7 @@ describe CustomersBooksOwnedsController do
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all customers_books_owneds as @customers_books_owneds" do
+    xit "assigns all customers_books_owneds as @customers_books_owneds" do
       customers_books_owned = CustomersBooksOwned.create! valid_attributes
       get :index, {}, valid_session
       assigns(:customers_books_owneds).should eq([customers_books_owned])

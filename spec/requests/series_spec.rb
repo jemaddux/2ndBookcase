@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "CustomersBooksOwneds" do
-  describe "GET /customers_books_owneds" do
-    xit "works! (now write some real specs)" do
+describe "Series" do
+  describe "GET /series" do
+    it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get customers_books_owneds_path
+      get series_index_path
       response.status.should be(200)
     end
   end
