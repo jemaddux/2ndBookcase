@@ -1,35 +1,10 @@
-<h1>Listing articles</h1>
+<h1>Blog</h1>
+  <% @articles.each do |article| %>
+    <%= article.title %>
+    <%= article.body %>
+    <%= article.rating %>
+    <%= link_to 'Show', article %>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Customer</th>
-      <th>Rating</th>
-      <th>Published</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<h3 style="text-align: center;"><%= will_paginate @articles %></h3>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= article.customer_id %></td>
-        <td><%= article.rating %></td>
-        <td><%= article.published %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
