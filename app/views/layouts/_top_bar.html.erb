@@ -49,7 +49,8 @@
             <%= link_to "Your Account", "#" %>
           <% end %>
           <ul class="dropdown">
-            <!--<li><%= link_to "Your Account", customer_path(current_user) %></li>-->
+            <li><%= link_to "Your Account", customer_path(current_user) %></li>
+            <li><%= link_to "Owned Books", customers_books_owneds_path %></li>
             <li class="divider"></li>
             <li><%= link_to "Logout", logout_path %></li>
           </ul>

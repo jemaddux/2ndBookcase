@@ -12,6 +12,8 @@ module SecondBookcase
     config.autoload_paths += %W(#{config.root}/app/controllers/bookshelf)
     config.autoload_paths += %W(#{config.root}/app/models/articles)
     config.autoload_paths += %W(#{config.root}/app/controllers/articles)
+    config.autoload_paths += %W(#{config.root}/app/models/customers)
+    config.autoload_paths += %W(#{config.root}/app/controllers/customers)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

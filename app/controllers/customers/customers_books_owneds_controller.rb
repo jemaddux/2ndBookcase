@@ -1,28 +1,22 @@
 class CustomersBooksOwnedsController < ApplicationController
   before_action :set_customers_books_owned, only: [:show, :edit, :update, :destroy]
 
-  # GET /customers_books_owneds
-  # GET /customers_books_owneds.json
   def index
-    @customers_books_owneds = CustomersBooksOwned.all
+    @books_owned = CustomersBooksOwned.where(customer_id: current_customer.id).page(params[:page]).per_page(20)
+    ids = @books_owned.pluck(:book_id)
+    @books = Book.where(id: ids)
   end
 
-  # GET /customers_books_owneds/1
-  # GET /customers_books_owneds/1.json
   def show
   end
 
-  # GET /customers_books_owneds/new
   def new
     @customers_books_owned = CustomersBooksOwned.new
   end
 
-  # GET /customers_books_owneds/1/edit
   def edit
   end
 
-  # POST /customers_books_owneds
-  # POST /customers_books_owneds.json
   def create
     @customers_books_owned = CustomersBooksOwned.new(customers_books_owned_params)
 
@@ -37,8 +31,6 @@ class CustomersBooksOwnedsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers_books_owneds/1
-  # PATCH/PUT /customers_books_owneds/1.json
   def update
     respond_to do |format|
       if @customers_books_owned.update(customers_books_owned_params)
@@ -51,8 +43,6 @@ class CustomersBooksOwnedsController < ApplicationController
     end
   end
 
-  # DELETE /customers_books_owneds/1
-  # DELETE /customers_books_owneds/1.json
   def destroy
     @customers_books_owned.destroy
     respond_to do |format|
