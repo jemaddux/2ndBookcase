@@ -9,7 +9,9 @@
   <h5 class="author_name">By: <%= book.author %></h5>
   <p><%= book.description %></p>
 
-  <% if current_customer %>
+  <% if true %>
+
+  <% elsif current_customer %>
     <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
       <%= hidden_field_tag(:book_id, book.id)  %>
       <%= hidden_field_tag(:customer_id, current_customer.id ) %>
