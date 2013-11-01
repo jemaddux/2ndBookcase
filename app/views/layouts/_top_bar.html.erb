@@ -28,6 +28,7 @@
       <% if current_admin %>
         <li class="has-dropdown"><%= link_to "Admin", admins_path %>
           <ul class="dropdown">
+            <li><%= link_to "Get New Books", get_new_books_path %></li>
             <li><%= link_to "New Book", new_book_path %></li>
             <li><%= link_to "All Books", admin_books_path %></li>
             <li><%= link_to "Customers", customers_path %></li>

@@ -26,6 +26,7 @@ SecondBookcase::Application.routes.draw do
   post 'check_in_book', to: "admins#check_in_book", as: 'check_in_book'
   get "book_checkout", to: "admins#book_checkout", as: "book_checkout"
   get "book_check_in", to: "admins#book_check_in", as: "book_check_in"
+  get "get_new_books", to: "admins#get_new_books", as: "get_new_books"
   get "blog", to: "articles#index", as: "blog"
 
   resources :reading_lists
