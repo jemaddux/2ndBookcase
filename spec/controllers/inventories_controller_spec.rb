@@ -39,36 +39,9 @@ describe InventoriesController do
 
   describe "POST create" do
     describe "with valid params" do
-      xit "creates a new Inventory" do
-        expect {
-          post :create, {:inventory => valid_attributes}, valid_session
-        }.to change(Inventory, :count).by(1)
-      end
-
-      xit "assigns a newly created inventory as @inventory" do
-        post :create, {:inventory => valid_attributes}, valid_session
-        assigns(:inventory).should be_a(Inventory)
-        assigns(:inventory).should be_persisted
-      end
-
-      xit "redirects to the created inventory" do
-        post :create, {:inventory => valid_attributes}, valid_session
-        response.should redirect_to(Inventory.last)
-      end
     end
 
     describe "with invalid params" do
-      xit "assigns a newly created but unsaved inventory as @inventory" do
-        Inventory.any_instance.stub(:save).and_return(false)
-        post :create, {:inventory => { "book_id" => "invalid value" }}, valid_session
-        assigns(:inventory).should be_a_new(Inventory)
-      end
-
-      xit "re-renders the 'new' template" do
-        Inventory.any_instance.stub(:save).and_return(false)
-        post :create, {:inventory => { "book_id" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
     end
   end
 
