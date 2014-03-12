@@ -1,6 +1,16 @@
 SecondBookcase::Application.routes.draw do
-  resources :admins
+  resources :series
 
+  resources :chapters
+
+  resources :customers_books_reads
+
+  resources :customers_books_owneds
+
+  resources :article_comments
+  resources :article_ratings
+  resources :articles
+  resources :admins
   resources :subscriptions
 
   get 'signup', to: 'customers#new', as: 'signup'
@@ -16,6 +26,8 @@ SecondBookcase::Application.routes.draw do
   post 'check_in_book', to: "admins#check_in_book", as: 'check_in_book'
   get "book_checkout", to: "admins#book_checkout", as: "book_checkout"
   get "book_check_in", to: "admins#book_check_in", as: "book_check_in"
+  get "get_new_books", to: "admins#get_new_books", as: "get_new_books"
+  get "blog", to: "articles#index", as: "blog"
 
   resources :reading_lists
   resources :inventories

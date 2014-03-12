@@ -1,0 +1,9 @@
+<h1>Books Owned</h1>
+  <ul class="large-block-grid-4">
+    <% @books.each do |book| %>
+      <%= render partial: "books/book", :locals => {:book => book} %>
+    <% end %>
+  </ul>
+<br>
+
+<h3 style="text-align: center;"><%= will_paginate @books_owned %></h3>

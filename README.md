@@ -1,6 +1,8 @@
-####Ruby version
+####Ruby version - Ruby 2.0.0
 
-#####Ruby 2.0.0
+####How to run the test suite - rspec
+
+### None of the below currently
 
 ####System dependencies
 
@@ -9,10 +11,6 @@
 ####Database creation
 
 ####Database initialization
-
-####How to run the test suite
-
-#####rspec
 
 ####Services (job queues, cache servers, search engines, etc.)
 

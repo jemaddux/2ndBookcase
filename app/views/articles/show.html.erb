@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @article.customer_id %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @article.rating %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @article.published %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

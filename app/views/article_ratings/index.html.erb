@@ -1,0 +1,33 @@
+<h1>Listing article_ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Customer</th>
+      <th>Rating</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @article_ratings.each do |article_rating| %>
+      <tr>
+        <td><%= article_rating.article_id %></td>
+        <td><%= article_rating.customer_id %></td>
+        <td><%= article_rating.rating %></td>
+        <td><%= article_rating.active %></td>
+        <td><%= link_to 'Show', article_rating %></td>
+        <td><%= link_to 'Edit', edit_article_rating_path(article_rating) %></td>
+        <td><%= link_to 'Destroy', article_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article rating', new_article_rating_path %>

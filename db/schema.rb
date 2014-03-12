@@ -11,11 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004004649) do
+ActiveRecord::Schema.define(version: 20131030014455) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "article_comments", force: true do |t|
+    t.integer  "article_id"
+    t.integer  "customer_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "article_ratings", force: true do |t|
+    t.integer  "article_id"
+    t.integer  "customer_id"
+    t.integer  "rating"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "customer_id"
+    t.float    "rating"
+    t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +69,15 @@ ActiveRecord::Schema.define(version: 20131004004649) do
     t.datetime "updated_at"
   end
 
+  create_table "chapters", force: true do |t|
+    t.integer  "book_id"
+    t.string   "title"
+    t.text     "summary"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "customers", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -51,10 +87,25 @@ ActiveRecord::Schema.define(version: 20131004004649) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "account_status"
+    t.string   "rental_plan"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
     t.integer  "plan_id"
+  end
+
+  create_table "customers_books_owneds", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers_books_reads", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "inventories", force: true do |t|
@@ -85,6 +136,14 @@ ActiveRecord::Schema.define(version: 20131004004649) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "in_list",            default: true
+  end
+
+  create_table "series", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriptions", force: true do |t|

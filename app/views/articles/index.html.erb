@@ -1,0 +1,10 @@
+<h1>Blog</h1>
+  <% @articles.each do |article| %>
+    <%= article.title %>
+    <%= article.body %>
+    <%= article.rating %>
+    <%= link_to 'Show', article %>
+  <% end %>
+
+<h3 style="text-align: center;"><%= will_paginate @articles %></h3>
+

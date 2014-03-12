@@ -17,7 +17,7 @@ describe CustomersController do
   let(:valid_session) { {} }
 
   describe "GET index" do
-    xit "assigns all customers as @customers" do
+    it "assigns all customers as @customers" do
       customer = Customer.create! valid_attributes
       get :index, {}, valid_session
       assigns(:customers).should eq([customer])
@@ -25,7 +25,7 @@ describe CustomersController do
   end
 
   describe "GET show" do
-    xit "assigns the requested customer as @customer" do
+    it "assigns the requested customer as @customer" do
       customer = Customer.create! valid_attributes
       get :show, {:id => customer.to_param}, valid_session
       assigns(:customer).should eq(customer)
@@ -40,7 +40,7 @@ describe CustomersController do
   end
 
   describe "GET edit" do
-    xit "assigns the requested customer as @customer" do
+    it "assigns the requested customer as @customer" do
       customer = Customer.create! valid_attributes
       get :edit, {:id => customer.to_param}, valid_session
       assigns(:customer).should eq(customer)
@@ -59,11 +59,6 @@ describe CustomersController do
         post :create, {:customer => valid_attributes}, valid_session
         assigns(:customer).should be_a(Customer)
         assigns(:customer).should be_persisted
-      end
-
-      xit "redirects to the created customer" do
-        post :create, {:customer => valid_attributes}, valid_session
-        response.should redirect_to(Customer.last)
       end
     end
 
@@ -84,19 +79,19 @@ describe CustomersController do
 
   describe "PUT update" do
     describe "with valid params" do
-      xit "updates the requested customer" do
+      it "updates the requested customer" do
         customer = Customer.create! valid_attributes
         Customer.any_instance.should_receive(:update).with({ "first_name" => "MyString" })
         put :update, {:id => customer.to_param, :customer => { "first_name" => "MyString" }}, valid_session
       end
 
-      xit "assigns the requested customer as @customer" do
+      it "assigns the requested customer as @customer" do
         customer = Customer.create! valid_attributes
         put :update, {:id => customer.to_param, :customer => valid_attributes}, valid_session
         assigns(:customer).should eq(customer)
       end
 
-      xit "redirects to the customer" do
+      it "redirects to the customer" do
         customer = Customer.create! valid_attributes
         put :update, {:id => customer.to_param, :customer => valid_attributes}, valid_session
         response.should redirect_to(customer)
@@ -104,14 +99,14 @@ describe CustomersController do
     end
 
     describe "with invalid params" do
-      xit "assigns the customer as @customer" do
+      it "assigns the customer as @customer" do
         customer = Customer.create! valid_attributes
         Customer.any_instance.stub(:save).and_return(false)
         put :update, {:id => customer.to_param, :customer => { "first_name" => "invalid value" }}, valid_session
         assigns(:customer).should eq(customer)
       end
 
-      xit "re-renders the 'edit' template" do
+      it "re-renders the 'edit' template" do
         customer = Customer.create! valid_attributes
         Customer.any_instance.stub(:save).and_return(false)
         put :update, {:id => customer.to_param, :customer => { "first_name" => "invalid value" }}, valid_session
@@ -121,14 +116,14 @@ describe CustomersController do
   end
 
   describe "DELETE destroy" do
-    xit "destroys the requested customer" do
+    it "destroys the requested customer" do
       customer = Customer.create! valid_attributes
       expect {
         delete :destroy, {:id => customer.to_param}, valid_session
       }.to change(Customer, :count).by(-1)
     end
 
-    xit "redirects to the customers list" do
+    it "redirects to the customers list" do
       customer = Customer.create! valid_attributes
       delete :destroy, {:id => customer.to_param}, valid_session
       response.should redirect_to(customers_url)

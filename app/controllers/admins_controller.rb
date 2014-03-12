@@ -1,3 +1,7 @@
+require 'json'
+require 'net/http'
+require 'open-uri'
+
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
   before_filter :authorize, only: [:index, :show, :update, :destroy]
@@ -26,6 +30,13 @@ class AdminsController < ApplicationController
 
   def book_check_in
     @books_checked_out = ReadingList.where(out_on_loan: true).page(params[:page]).per_page(20)
+  end
+
+  def get_new_books
+    access_key = "OQJO27UT"
+    uri =  "http://www.isbndb.com/api/books.xml"
+    uri += "?access_key=#{access_key}&index1=title&value1=thief+of+time"
+    @books = Hash.from_xml(open(uri))["ISBNdb"]["BookList"]["BookData"]
   end
 
   def new
