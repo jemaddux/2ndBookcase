@@ -17,9 +17,9 @@ namespace :db do
       inventory.delete
     end
     puts "Cleared inventory."
-    BookCategories.all.each do |book_category|
-      book_category.delete
-    end
+    # BookCategories.all.each do |book_category|
+    #   book_category.delete
+    # end
     puts "Cleared book categories."
     Customer.all.each do |customer|
       customer.delete
@@ -36,8 +36,8 @@ namespace :db do
   task :add_john => :environment do
     unless Customer.find_by_email("jemaddux@gmail.com")
       customer = Customer.new
-      customer.password = "4Ginntonic"
-      customer.password_confirmation = "4Ginntonic"
+      customer.password = "password"
+      customer.password_confirmation = "password"
       customer.email = "jemaddux@gmail.com"
       customer.first_name = "John"
       customer.last_name = "Maddux"
@@ -58,8 +58,8 @@ namespace :db do
 
       admin = Admin.new
       admin.email = "jemaddux@gmail.com"
-      admin.password = "4Ginntonic"
-      admin.password_confirmation = "4Ginntonic"
+      admin.password = "password"
+      admin.password_confirmation = "password"
       admin.save!
     end
   end

@@ -19,7 +19,7 @@ gem 'faker'
 gem 'google-analytics-rails'
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
 end
 
 group :development, :test do

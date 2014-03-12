@@ -2,6 +2,13 @@
 
 ####Ruby version - Ruby 2.0.0
 
+####How to run
+
+- bundle install
+- rake db:migrate db:test:prepare
+- rake db:fake_out_database
+- unicorn
+
 ####How to run the test suite - rspec
 
 ### None of the below currently
