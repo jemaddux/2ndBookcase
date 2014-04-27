@@ -17,9 +17,9 @@ gem 'protected_attributes'
 gem 'stripe'
 gem 'faker'
 gem 'google-analytics-rails'
+gem 'pg'
 
 group :production do
-  gem 'pg'
 end
 
 group :development, :test do
@@ -27,11 +27,11 @@ group :development, :test do
   gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'sqlite3'
 end
 
 group :test do
   gem 'simplecov', :require => false
+  gem 'sqlite3'
 end
 
 group :doc do

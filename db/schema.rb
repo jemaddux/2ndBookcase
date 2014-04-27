@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131030014455) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -87,6 +90,7 @@ ActiveRecord::Schema.define(version: 20131030014455) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "account_status"
+    t.string   "rental_plan"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
