@@ -1,29 +1,23 @@
-<% if book %>
-  <li class="book_li">
-    <% unless book.picture_url.blank? %>
-      <%= image_tag("books/covers/#{book.picture_url}.jpg", class: "book_cover") %>
-    <% else %>
-      <%= image_tag("#{book.id % 10}.jpg", class: "book_cover") %>
-    <% end %>
+<li class="book_li">
+  <%= image_tag("#{book.id % 10}.jpg", class: "book_cover") %>
 
-    <h5 class="book_title"><%= book.name %></h5>
-    <h5 class="author_name">By: <%= book.author %></h5>
-    <p><%= book.description %></p>
+  <h5 class="book_title"><%= book.name %></h5>
+  <h5 class="author_name">By: <%= book.author %></h5>
+  <p><%= book.description %></p>
 
-    <% if true %>
+  <% if true %>
 
-    <% elsif current_customer %>
-      <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
-        <%= hidden_field_tag(:book_id, book.id)  %>
-        <%= hidden_field_tag(:customer_id, current_customer.id ) %>
-        <% if current_customer.reading_lists.where(in_list: true).map {|rl| rl.book_id}.include? book.id %>
-          <input class="small button" type="submit" value="In your reading list" name="commit"></input>
-        <% else %>
-          <%= submit_tag("Add to Reading List", class: "small success button") %>
-        <% end %>
+  <% elsif current_customer %>
+    <%= form_tag(reading_lists_path, method: "POST", class: "add_to_reading_list") do %>
+      <%= hidden_field_tag(:book_id, book.id)  %>
+      <%= hidden_field_tag(:customer_id, current_customer.id ) %>
+      <% if current_customer.reading_lists.where(in_list: true).map {|rl| rl.book_id}.include? book.id %>
+        <input class="small button" type="submit" value="In your reading list" name="commit"></input>
+      <% else %>
+        <%= submit_tag("Add to Reading List", class: "small success button") %>
       <% end %>
-    <% else %>
-      <%= link_to "Sign Up to Rent", signup_path, class: "button success" %>
     <% end %>
-  </li>
-<% end %>
+  <% else %>
+    <%= link_to "Sign Up to Rent", signup_path, class: "button success" %>
+  <% end %>
+</li>
