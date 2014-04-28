@@ -19,6 +19,7 @@ gem 'faker'
 gem 'google-analytics-rails'
 gem 'pg'
 gem 'rails_12factor'
+gem 'pry'
 
 group :production do
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
