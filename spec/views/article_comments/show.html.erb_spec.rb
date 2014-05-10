@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'article_comments/show' do
   before(:each) do
     @article_comment = assign(:article_comment, stub_model(ArticleComment,
-      :article_id => 1,
-      :customer_id => 2,
-      :active => false
+      article_id: 1,
+      customer_id: 2,
+      active: false
     ))
   end
 

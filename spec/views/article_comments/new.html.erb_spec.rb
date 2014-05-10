@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'article_comments/new' do
   before(:each) do
     assign(:article_comment, stub_model(ArticleComment,
-      :article_id => 1,
-      :customer_id => 1,
-      :active => false
+      article_id: 1,
+      customer_id: 1,
+      active: false
     ).as_new_record)
   end
 

@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'article_ratings/new' do
   before(:each) do
     assign(:article_rating, stub_model(ArticleRating,
-      :article_id => 1,
-      :customer_id => 1,
-      :rating => 1,
-      :active => false
+      article_id: 1,
+      customer_id: 1,
+      rating: 1,
+      active: false
     ).as_new_record)
   end
 
