@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "article_comments/show" do
+describe 'article_comments/show' do
   before(:each) do
     @article_comment = assign(:article_comment, stub_model(ArticleComment,
       :article_id => 1,
@@ -9,7 +9,7 @@ describe "article_comments/show" do
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
