@@ -45,7 +45,6 @@ class Book < ActiveRecord::Base
   end
 
 private
-
   def self.first_available_inventory(book_id)
     @inventory = Inventory.where(book_id: book_id, checked_out: false, in_circulation: true).first
   end
