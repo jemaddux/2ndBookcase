@@ -36,6 +36,7 @@ end
 group :test do
   gem 'simplecov', :require => false
   gem 'sqlite3'
+  gem 'guard-rspec', require: false
 end
 
 group :doc do

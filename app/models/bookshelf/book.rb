@@ -6,6 +6,9 @@ class Book < ActiveRecord::Base
   attr_accessible :name, :description, :rating, :times_rated, :author
   validates_presence_of :name, :description, :author
 
+  # [:mobi, :pdf, :epub, :txt].each do |type|
+
+
   def self.checkout_book(params)
     inventory = first_available_inventory(params["book_id"])
     inventory.checked_out = true
