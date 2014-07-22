@@ -1,3 +1,5 @@
+An open library. Free for all.
+
 [![Code Climate](https://codeclimate.com/github/jemaddux/2ndBookcase.png)](https://codeclimate.com/github/jemaddux/2ndBookcase)
 
 ####Ruby version - Ruby 2.0.0
