@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030014455) do
+ActiveRecord::Schema.define(version: 20140722021325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 20131030014455) do
     t.datetime "updated_at"
     t.string   "author"
     t.text     "picture_url"
+    t.string   "mobi_url"
+    t.string   "pdf_url"
+    t.string   "epub_url"
+    t.string   "txt_url"
   end
 
   create_table "books_categories", id: false, force: true do |t|
