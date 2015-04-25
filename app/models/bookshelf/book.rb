@@ -6,6 +6,10 @@ class Book < ActiveRecord::Base
   attr_accessible :name, :description, :rating, :times_rated, :author
   validates_presence_of :name, :description, :author
 
+  ["mobi", "pdf", "epub", "txt"].each do |type|
+    define_method(type + "?"){ !self.send((type + "_url").to_sym).blank? }
+  end
+
   def self.checkout_book(params)
     inventory = first_available_inventory(params["book_id"])
     inventory.checked_out = true
@@ -41,7 +45,6 @@ class Book < ActiveRecord::Base
   end
 
 private
-
   def self.first_available_inventory(book_id)
     @inventory = Inventory.where(book_id: book_id, checked_out: false, in_circulation: true).first
   end
