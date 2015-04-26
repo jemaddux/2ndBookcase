@@ -8,9 +8,5 @@ describe 'admins/show' do
     ))
   end
 
-  it 'renders attributes in <p>' do
-    render
-    rendered.should match(/Email/)
-    rendered.should match(/Password Digest/)
-  end
+  
 end

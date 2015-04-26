@@ -13,10 +13,6 @@ describe AdminsController do
   end
 
   describe "GET new" do
-    it "assigns a new admin as @admin" do
-      get :new, {}, valid_session
-      assigns(:admin).should be_a_new(Admin)
-    end
   end
 
   describe "GET edit" do
@@ -27,17 +23,6 @@ describe AdminsController do
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved admin as @admin" do
-        Admin.any_instance.stub(:save).and_return(false)
-        post :create, {:admin => { "email" => "invalid value" }}, valid_session
-        assigns(:admin).should be_a_new(Admin)
-      end
-
-      it "re-renders the 'new' template" do
-        Admin.any_instance.stub(:save).and_return(false)
-        post :create, {:admin => { "email" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
     end
   end
 
@@ -51,5 +36,4 @@ describe AdminsController do
 
   describe "DELETE destroy" do
   end
-
 end

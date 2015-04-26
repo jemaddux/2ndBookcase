@@ -4,7 +4,7 @@ require 'open-uri'
 
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:index, :show, :update, :destroy]
+  before_action :authorize, only: [:index, :show, :update, :destroy]
 
   def index
     @admins = Admin.all

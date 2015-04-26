@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:show, :edit]
+  before_action :authorize, only: [:show, :edit]
 
   def index
     @customers = Customer.all.page(params[:page]).per_page(50)
