@@ -1,14 +1,12 @@
 class CustomersBooksReadsController < ApplicationController
   before_action :set_customers_books_read, only: [:show, :edit, :update, :destroy]
 
-  # GET /customers_books_reads
-  # GET /customers_books_reads.json
+  # GET /customers_books_reads (.json)
   def index
     @customers_books_reads = CustomersBooksRead.all
   end
 
-  # GET /customers_books_reads/1
-  # GET /customers_books_reads/1.json
+  # GET /customers_books_reads/1 (.json)
   def show
   end
 
@@ -21,8 +19,7 @@ class CustomersBooksReadsController < ApplicationController
   def edit
   end
 
-  # POST /customers_books_reads
-  # POST /customers_books_reads.json
+  # POST /customers_books_reads (.json)
   def create
     @customers_books_read = CustomersBooksRead.new(customers_books_read_params)
 
@@ -37,8 +34,6 @@ class CustomersBooksReadsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers_books_reads/1
-  # PATCH/PUT /customers_books_reads/1.json
   def update
     respond_to do |format|
       if @customers_books_read.update(customers_books_read_params)
@@ -51,8 +46,7 @@ class CustomersBooksReadsController < ApplicationController
     end
   end
 
-  # DELETE /customers_books_reads/1
-  # DELETE /customers_books_reads/1.json
+  # DELETE /customers_books_reads/1 (.json)
   def destroy
     @customers_books_read.destroy
     respond_to do |format|
@@ -62,12 +56,10 @@ class CustomersBooksReadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_customers_books_read
       @customers_books_read = CustomersBooksRead.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def customers_books_read_params
       params.require(:customers_books_read).permit(:customer_id, :book_id)
     end
